@@ -1,0 +1,13 @@
+<table style="margin:10px auto;">
+  <tr>
+    <{$block.main}>
+  </tr>
+</table>
+
+<{if $block.mean}>
+  <div class="well well-small"><{$block.mean}></div>
+<{/if}>
+
+<a href="<{$xoops_url}>/modules/tad_idioms/index.php?g2p=<{$block.g2p}>&show_sn=<{$block.show_sn}>#<{$block.show_sn}>" class="btn btn-mini btn-info pull-right">more...</a>
+<{$block.sound_js}>
+<div class="clearfix"></div>
