@@ -4,6 +4,14 @@
 
 <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
 
+<form action="index.php" method="post">
+  <div class="row-fluid">
+    <label class="span1"><{$smarty.const._MD_TAD_IDIOMS_SEARCH}><{$smarty.const._TAD_FOR}></label>
+    <input type="text" name="keyword" class="span3">
+    <button type="submit" class="btn"><{$smarty.const._MD_TAD_IDIOMS_SEARCH}></button>
+  </div>
+</form>
+
 <{foreach from=$all_content item=idioms}>
   <a name="<{$idioms.name}>"></a>
   <div class="well well-small" <{if $idioms.current}>style="background-color:#FFFF80"<{/if}>>
@@ -23,7 +31,7 @@
         tts<{$idioms.sn}>.ConvertInit('id:ttscontent<{$idioms.sn}>','ttsmedia<{$idioms.sn}>','Bruce','100','0','0','0','5');
 
       </script>
-  
+
     </td>
     </tr>
     </table>
