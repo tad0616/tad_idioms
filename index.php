@@ -4,16 +4,27 @@
 // 製作日期：2012-06-02
 // $Id:$
 // ------------------------------------------------------------------------- //
+
 /*-----------引入檔案區--------------*/
-include_once "header.php";
+include "header.php";
 $xoopsOption['template_main'] = "tad_idioms_index_tpl.html";
+include_once XOOPS_ROOT_PATH."/header.php";
 /*-----------function區--------------*/
 
 
 //列出所有tad_idioms資料
-function list_tad_idioms(){
-	global $xoopsDB,$xoopsModule;
-	$sql = "select * from ".$xoopsDB->prefix("tad_idioms")."";
+function list_tad_idioms($show_sn=""){
+	global $xoopsDB,$xoopsModule,$xoopsTpl;
+
+  $andkeyword="";
+  if(isset($_POST['keyword'])){
+    $myts = MyTextSanitizer::getInstance();
+    $keyword=$myts->addSlashes($_POST['keyword']);
+    $andkeyword=" where `title` like '%{$keyword}%' or `mean` like '%{$keyword}%'";
+  }
+
+
+	$sql = "select * from ".$xoopsDB->prefix("tad_idioms")." $andkeyword";
 
 	//getPageBar($原sql語法, 每頁顯示幾筆資料, 最多顯示幾個頁數選項);
   $PageBar=getPageBar($sql,20,10);
@@ -24,16 +35,17 @@ function list_tad_idioms(){
 	$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, mysql_error());
 
 	$all_content="";
+  $i=0;
 
 	while($all=$xoopsDB->fetchArray($result)){
 	  //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
     foreach($all as $k=>$v){
       $$k=$v;
     }
-    
+
     $ji=explode(" ",$juin);
     $main="";
-    $sound=array('ˊ','ˇ','ˋ','˙');
+    $sound=array(_MD_TAD_IDIOMS_2,_MD_TAD_IDIOMS_3,_MD_TAD_IDIOMS_4,_MD_TAD_IDIOMS_5);
     foreach($ji as $n=>$juin){
       $sud=substr($juin,-2);
       if(in_array($sud,$sound)){
@@ -46,54 +58,49 @@ function list_tad_idioms(){
       $m=$n*3;
       $txt=substr($title,$m,3);
       $main.="
-      <td style='vertical-align: middle; text-align:right;width:30px;'><span style='font-size:30px;font-family:標楷體;'>$txt</span></td>
-        <td style='vertical-align: middle;width:11px;'><span style='font-size:10px;font-family:標楷體;writing-mode:tb-rl;line-height:{$lh}%;'>$juin</span></td>
-        <td style='vertical-align: middle; text-align:left;width:19px;'><span style='font-size:10px;font-family:標楷體'>$sud</span></td>
+      <td style='font-size:2em;font-family:"._MD_TAD_IDIOMS_FONT.";'>$txt</td>
+      <td style='font-size:11px;font-family:"._MD_TAD_IDIOMS_FONT.";width:12px;line-height:{$lh}%;'>$juin</td>
+      <td style='font-size:11px;font-family:"._MD_TAD_IDIOMS_FONT.";width:12px'>$sud</td>
       ";
     }
-      
-		$all_content.="<tr style='height:80px;'>
-		<td><table style='width:240px;'>{$main}</table><div>{$mean}</div></td>
-		</tr>";
+
+
+    $newsn=sprintf('%1$03d', $sn);
+
+    $all_content[$i]['current']=$sn==$show_sn?1:0;
+    $all_content[$i]['name']=$sn;
+    $all_content[$i]['sn']=$newsn;
+    $all_content[$i]['main']=$main;
+    $all_content[$i]['mean']=$mean;
+    $all_content[$i]['title']=$title;
+    $i++;
 	}
 
-  //if(empty($all_content))return "";
 
-	$data="
-	<table summary='list_table' style='width:100%;'>
-	<tbody>
-	$all_content
-	<tr>
-	<td class='bar'>
-	<a href='{$_SERVER['PHP_SELF']}?op=tad_idioms_form'  class='link_button_r'>"._BP_ADD."</a>
-	{$bar}</td></tr>
-	</tbody>
-	</table>";
-
-	//raised,corners,inset
-	//$main=div_3d("",$data,"corners");
-
-	return $data;
+  $xoopsTpl->assign('bar' , $bar);
+  $xoopsTpl->assign('all_content' , $all_content);
 }
+
+
 
 
 /*-----------執行動作判斷區----------*/
 $op=empty($_REQUEST['op'])?"":$_REQUEST['op'];
 $sn=empty($_REQUEST['sn'])?"":intval($_REQUEST['sn']);
+$show_sn=empty($_REQUEST['show_sn'])?"":intval($_REQUEST['show_sn']);
 
+$xoopsTpl->assign( "toolbar" , toolbar_bootstrap($interface_menu)) ;
+$xoopsTpl->assign( "bootstrap" , get_bootstrap()) ;
+$xoopsTpl->assign( "jquery" , get_jquery(true)) ;
+$xoopsTpl->assign( "isAdmin" , $isAdmin) ;
 
 switch($op){
   //預設動作
   default:
-  if(empty($sn)){
-  	$main=list_tad_idioms();
-  	//$main.=tad_idioms_form($sn);
-  }else{
-  	$main=show_one_tad_idioms($sn);
-  }
+  list_tad_idioms($show_sn);
   break;
 }
 
 /*-----------秀出結果區--------------*/
-module_footer($main);
+include_once XOOPS_ROOT_PATH.'/footer.php';
 ?>

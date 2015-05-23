@@ -33,10 +33,13 @@ function tad_idioms_show($options){
     if(empty($show_sn))$show_sn=$sn;
     
     if($options[1]==0){
-      $main.="<td style='font-size:2.5em;font-family:"._MB_TAD_IDIOMS_FONT.";'>$title</td>";
+      $block['no_juin']=true;
+      $block['title']=$title;
     }else{
+      $block['no_juin']=false;
       $ji=explode(" ",$juin);
       $main="";
+      $i=0;
       $sound=array(_MB_TAD_IDIOMS_2,_MB_TAD_IDIOMS_3,_MB_TAD_IDIOMS_4,_MB_TAD_IDIOMS_5);
       foreach($ji as $n=>$juin){
         $sud=substr($juin,-2);
@@ -50,10 +53,11 @@ function tad_idioms_show($options){
         }
         $m=$n*3;
         $txt=substr($title,$m,3);
-        $main.="      <td style='vertical-align: middle; text-align:right;width:30px;'><span style='font-size:30px;font-family:"._MB_TAD_IDIOMS_FONT.";'>$txt</span></td>
-        <td style='vertical-align: middle;width:11px;'><span style='font-size:10px;font-family:"._MB_TAD_IDIOMS_FONT.";writing-mode:tb-rl;line-height:{$lh}%;'>$juin</span></td>
-        <td style='vertical-align: middle; text-align:left;width:19px;'><span style='font-size:10px;font-family:"._MB_TAD_IDIOMS_FONT."'>$sud</span></td>
-        ";
+        $main[$i]['txt']=$txt;
+        $main[$i]['lh']=$lh;
+        $main[$i]['juin']=$juin;
+        $main[$i]['sud']=$sud;
+        $i++;
       }
     }
     

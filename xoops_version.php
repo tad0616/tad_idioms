@@ -1,14 +1,9 @@
 <?php
-//  ------------------------------------------------------------------------ //
-// 本模組由 tad 製作
-// 製作日期：2012-06-02
-// $Id:$
-// ------------------------------------------------------------------------- //
 $modversion = array();
 
 //---模組基本資訊---//
 $modversion['name'] = _MI_TADIDIOMS_NAME;
-$modversion['version'] = 1.0;
+$modversion['version'] = 1.3;
 $modversion['description'] = _MI_TADIDIOMS_DESC;
 $modversion['author'] = _MI_TADIDIOMS_AUTHOR;
 $modversion['credits'] = _MI_TADIDIOMS_CREDITS;
@@ -19,7 +14,7 @@ $modversion['image'] = "images/logo_{$xoopsConfig['language']}.png";
 $modversion['dirname'] = basename(dirname(__FILE__));
 
 //---模組狀態資訊---//
-$modversion['release_date'] = '2013/07/26';
+$modversion['release_date'] = '2014/03/04';
 $modversion['module_website_url'] = 'http://tad0616.net/';
 $modversion['module_website_name'] = _MI_TAD_WEB;
 $modversion['module_status'] = 'release';
