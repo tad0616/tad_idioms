@@ -13,5 +13,3 @@ define("_MI_TADIDIOMS_ADMENU1", "成語管理");
 define("_MI_TADIDIOMS_SMNAME2", "成語釋義");
 define("_MI_TADIDIOMS_BNAME1","成語隨時背");
 define("_MI_TADIDIOMS_BDESC1","成語隨時背(tad_idioms_show)");
-
-?>

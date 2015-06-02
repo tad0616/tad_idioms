@@ -15,11 +15,9 @@ define("_MD_TADIDIOMS_SHOW_TIMES","顯示次數");
 define("_MD_TADIDIOMS_SEARCH_TIMES","被查詢次數");
 define("_MD_TADIDIOMS_CATE","組別");
 
-define("_MD_TAD_IDIOMS_2","ˊ");
-define("_MD_TAD_IDIOMS_3","ˇ");
-define("_MD_TAD_IDIOMS_4","ˋ");
-define("_MD_TAD_IDIOMS_5","˙");
-define("_MD_TAD_IDIOMS_FONT","標楷體");
-define("_MD_TAD_IDIOMS_SEARCH","搜尋");
-
-?>
+define("_MD_TADIDIOMS_2","ˊ");
+define("_MD_TADIDIOMS_3","ˇ");
+define("_MD_TADIDIOMS_4","ˋ");
+define("_MD_TADIDIOMS_5","˙");
+define("_MD_TADIDIOMS_FONT","標楷體");
+define("_MD_TADIDIOMS_SEARCH","搜尋");

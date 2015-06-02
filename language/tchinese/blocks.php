@@ -12,10 +12,8 @@ define("_MB_TADIDIOMS_TAD_IDIOMS_SHOW_EDIT_BITEM3","是否使用語音功能");
 define("_MB_TADIDIOMS_TAD_IDIOMS_SHOW_EDIT_BITEM4","呈現順序");
 define("_MB_TADIDIOMS_BITEM4_BY_DAY","一天一則");
 define("_MB_TADIDIOMS_BITEM4_BY_RANDOM","隨機");
-define("_MB_TAD_IDIOMS_2","ˊ");
-define("_MB_TAD_IDIOMS_3","ˇ");
-define("_MB_TAD_IDIOMS_4","ˋ");
-define("_MB_TAD_IDIOMS_5","˙");
-define("_MB_TAD_IDIOMS_FONT","標楷體");
-
-?>
+define("_MB_TADIDIOMS_2","ˊ");
+define("_MB_TADIDIOMS_3","ˇ");
+define("_MB_TADIDIOMS_4","ˋ");
+define("_MB_TADIDIOMS_5","˙");
+define("_MB_TADIDIOMS_FONT","標楷體");
