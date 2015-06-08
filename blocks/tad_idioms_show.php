@@ -1,14 +1,9 @@
 <?php
-//  ------------------------------------------------------------------------ //
-// 本模組由 tad 製作
-// 製作日期：2012-06-02
-// $Id:$
-// ------------------------------------------------------------------------- //
-
 //區塊主函式 (成語隨時背(tad_idioms_show))
-function tad_idioms_show($options) {
+function tad_idioms_show($options)
+{
     global $xoopsDB;
-    $num = empty($options[0]) ? 1 : (int)($options[0]);
+    $num = empty($options[0]) ? 1 : (int) ($options[0]);
 
     if ($options[4] == "day") {
         $day   = date("z");
@@ -18,11 +13,10 @@ function tad_idioms_show($options) {
         $by = "order by rand() limit 0,$num";
     }
 
-
     $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " $by ";
 
     $result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
-    $main = "";
+    $main   = "";
     while ($all = $xoopsDB->fetchArray($result)) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
         foreach ($all as $k => $v) {
@@ -73,7 +67,6 @@ function tad_idioms_show($options) {
         $sound_js = play_idioms_sound($title . " , " . $mean);
     }
 
-
     $block['g2p']      = $g2p;
     $block['show_sn']  = $show_sn;
     $block['main']     = $main;
@@ -83,7 +76,8 @@ function tad_idioms_show($options) {
     return $block;
 }
 
-function play_idioms_sound($title = "") {
+function play_idioms_sound($title = "")
+{
     $main = "
   <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
   <div id='ttscontent' style='display:none;'>$title</div>
@@ -103,7 +97,8 @@ function play_idioms_sound($title = "") {
 }
 
 //區塊編輯函式
-function tad_idioms_show_edit($options) {
+function tad_idioms_show_edit($options)
+{
     $chked1_0      = ($options[1] == 0) ? "checked" : "";
     $chked1_1      = ($options[1] == 1) ? "checked" : "";
     $chked2_0      = ($options[2] == 0) ? "checked" : "";

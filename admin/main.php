@@ -1,10 +1,4 @@
 <?php
-//  ------------------------------------------------------------------------ //
-// 本模組由 tad 製作
-// 製作日期：2012-06-02
-// $Id:$
-// ------------------------------------------------------------------------- //
-
 /*-----------引入檔案區--------------*/
 $xoopsOption['template_main'] = "tad_idioms_adm_main.html";
 include_once "header.php";
@@ -12,7 +6,8 @@ include_once "../function.php";
 
 /*-----------function區--------------*/
 //tad_idioms編輯表單
-function tad_idioms_form($sn = "") {
+function tad_idioms_form($sn = "")
+{
     global $xoopsDB, $xoopsUser, $xoopsTpl;
 
     //抓取預設值
@@ -23,7 +18,6 @@ function tad_idioms_form($sn = "") {
     }
 
     //預設值設定
-
 
     //設定「sn」欄位預設值
     $sn = (!isset($DBV['sn'])) ? $sn : $DBV['sn'];
@@ -66,17 +60,19 @@ function tad_idioms_form($sn = "") {
 }
 
 //新增tad_idioms計數器
-function add_tad_idioms_counter($sn = '') {
+function add_tad_idioms_counter($sn = '')
+{
     global $xoopsDB, $xoopsModule;
     $sql = "update " . $xoopsDB->prefix("tad_idioms") . " set `search_times`=`search_times`+1 where `sn`='{$sn}'";
     $xoopsDB->queryF($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
 }
 
 //新增資料到tad_idioms中
-function insert_tad_idioms() {
+function insert_tad_idioms()
+{
     global $xoopsDB, $xoopsUser;
 
-    $myts           =& MyTextSanitizer::getInstance();
+    $myts           = &MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
     $_POST['juin']  = $myts->addSlashes($_POST['juin']);
     $_POST['mean']  = $myts->addSlashes($_POST['mean']);
@@ -93,10 +89,11 @@ function insert_tad_idioms() {
 }
 
 //更新tad_idioms某一筆資料
-function update_tad_idioms($sn = "") {
+function update_tad_idioms($sn = "")
+{
     global $xoopsDB, $xoopsUser;
 
-    $myts           =& MyTextSanitizer::getInstance();
+    $myts           = &MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
     $_POST['juin']  = $myts->addSlashes($_POST['juin']);
     $_POST['mean']  = $myts->addSlashes($_POST['mean']);
@@ -113,7 +110,8 @@ function update_tad_idioms($sn = "") {
 }
 
 //列出所有tad_idioms資料
-function list_tad_idioms($show_function = 1) {
+function list_tad_idioms($show_function = 1)
+{
     global $xoopsDB, $xoopsModule, $xoopsTpl;
 
     $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . "";
@@ -149,28 +147,31 @@ function list_tad_idioms($show_function = 1) {
 }
 
 //以流水號取得某筆tad_idioms資料
-function get_tad_idioms($sn = "") {
+function get_tad_idioms($sn = "")
+{
     global $xoopsDB;
     if (empty($sn)) {
         return;
     }
-    $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " where sn='$sn'";
+    $sql    = "select * from " . $xoopsDB->prefix("tad_idioms") . " where sn='$sn'";
     $result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
-    $data = $xoopsDB->fetchArray($result);
+    $data   = $xoopsDB->fetchArray($result);
 
     return $data;
 }
 
 //刪除tad_idioms某筆資料資料
-function delete_tad_idioms($sn = "") {
+function delete_tad_idioms($sn = "")
+{
     global $xoopsDB;
     $sql = "delete from " . $xoopsDB->prefix("tad_idioms") . " where sn='$sn'";
     $xoopsDB->queryF($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
 }
 
 /*-----------執行動作判斷區----------*/
-$op = empty($_REQUEST['op']) ? "" : $_REQUEST['op'];
-$sn = empty($_REQUEST['sn']) ? "" : (int)($_REQUEST['sn']);
+include_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
+$op = system_CleanVars($_REQUEST, 'op', '', 'string');
+$sn = system_CleanVars($_REQUEST, 'sn', 0, 'int');
 
 switch ($op) {
     /*---判斷動作請貼在下方---*/
@@ -202,7 +203,6 @@ switch ($op) {
     default:
         list_tad_idioms();
         break;
-
 
     /*---判斷動作請貼在上方---*/
 }

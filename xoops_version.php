@@ -3,7 +3,7 @@ $modversion = array();
 
 //---模組基本資訊---//
 $modversion['name']        = _MI_TADIDIOMS_NAME;
-$modversion['version']     = 1.3;
+$modversion['version']     = 1.4;
 $modversion['description'] = _MI_TADIDIOMS_DESC;
 $modversion['author']      = _MI_TADIDIOMS_AUTHOR;
 $modversion['credits']     = _MI_TADIDIOMS_CREDITS;
@@ -14,7 +14,7 @@ $modversion['image']       = "images/logo_{$xoopsConfig['language']}.png";
 $modversion['dirname']     = basename(__DIR__);
 
 //---模組狀態資訊---//
-$modversion['release_date']        = '2014/03/04';
+$modversion['release_date']        = '2015/06/08';
 $modversion['module_website_url']  = 'http://tad0616.net/';
 $modversion['module_website_name'] = _MI_TAD_WEB;
 $modversion['module_status']       = 'release';
@@ -24,14 +24,14 @@ $modversion['min_php']             = 5.2;
 $modversion['min_xoops']           = '2.5';
 
 //---paypal資訊---//
-$modversion ['paypal']                  = array();
-$modversion ['paypal']['business']      = 'tad0616@gmail.com';
-$modversion ['paypal']['item_name']     = 'Donation : ' . _MI_TAD_WEB;
-$modversion ['paypal']['amount']        = 0;
-$modversion ['paypal']['currency_code'] = 'USD';
+$modversion['paypal']                  = array();
+$modversion['paypal']['business']      = 'tad0616@gmail.com';
+$modversion['paypal']['item_name']     = 'Donation : ' . _MI_TAD_WEB;
+$modversion['paypal']['amount']        = 0;
+$modversion['paypal']['currency_code'] = 'USD';
 
 //---啟動後台管理界面選單---//
-$modversion['system_menu']      = 1;//---資料表架構---//
+$modversion['system_menu']      = 1; //---資料表架構---//
 $modversion['sqlfile']['mysql'] = "sql/mysql.sql";
 $modversion['tables'][1]        = "tad_idioms";
 
@@ -53,11 +53,17 @@ $modversion['onUninstall'] = "include/onUninstall.php";
 //---樣板設定---//
 $modversion['templates']                    = array();
 $i                                          = 1;
-$modversion['templates'][$i]['file']        = 'tad_idioms_index_tpl.html';
-$modversion['templates'][$i]['description'] = 'tad_idioms_index_tpl.html';
+$modversion['templates'][$i]['file']        = 'tad_idioms_index.html';
+$modversion['templates'][$i]['description'] = 'tad_idioms_index.html';
+++$i;
+$modversion['templates'][$i]['file']        = 'tad_idioms_index_b3.html';
+$modversion['templates'][$i]['description'] = 'tad_idioms_index_b3.html';
 ++$i;
 $modversion['templates'][$i]['file']        = 'tad_idioms_adm_main.html';
 $modversion['templates'][$i]['description'] = 'tad_idioms_adm_main.html';
+++$i;
+$modversion['templates'][$i]['file']        = 'tad_idioms_adm_main_b3.html';
+$modversion['templates'][$i]['description'] = 'tad_idioms_adm_main_b3.html';
 
 //---區塊設定---//
 $modversion['blocks'][1]['file']        = "tad_idioms_show.php";

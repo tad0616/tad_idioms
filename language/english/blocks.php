@@ -1,10 +1,4 @@
 <?php
-//  ------------------------------------------------------------------------ //
-// 本模組由 tad 製作
-// 製作日期：2012-06-02
-// $Id:$
-// ------------------------------------------------------------------------- //
-
 define('_MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM0', 'Shows the number');
 define('_MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM1', 'Displayed phonetic');
 define('_MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM2', 'Displaye?');

@@ -1,37 +1,38 @@
 <?php
 
-function xoops_module_update_tad_idioms(&$module, $old_version) {
-    GLOBAL $xoopsDB;
+function xoops_module_update_tad_idioms(&$module, $old_version)
+{
+    global $xoopsDB;
 
     mk_dir(XOOPS_ROOT_PATH . "/uploads/tad_idioms");
 
     //if(!chk_chk1()) go_update1();
-
 
     return true;
 }
 
 /*
 function chk_chk1(){
-    global $xoopsDB;
-    $sql="select count(`counter`) from ".$xoopsDB->prefix("tad_idioms_content");
-    $result=$xoopsDB->query($sql);
-    if(empty($result)) return false;
-    return true;
+global $xoopsDB;
+$sql="select count(`counter`) from ".$xoopsDB->prefix("tad_idioms_content");
+$result=$xoopsDB->query($sql);
+if(empty($result)) return false;
+return true;
 }
 
 
 function go_update1(){
-    global $xoopsDB;
-    $sql="ALTER TABLE ".$xoopsDB->prefix("tad_idioms_content")." ADD `counter` smallint(5) NOT NULL";
-    $xoopsDB->queryF($sql) or redirect_header(XOOPS_URL,3,  mysql_error());
+global $xoopsDB;
+$sql="ALTER TABLE ".$xoopsDB->prefix("tad_idioms_content")." ADD `counter` smallint(5) NOT NULL";
+$xoopsDB->queryF($sql) or redirect_header(XOOPS_URL,3,  mysql_error());
 
-    return true;
+return true;
 }
-*/
+ */
 
 //建立目錄
-function mk_dir($dir = "") {
+function mk_dir($dir = "")
+{
     //若無目錄名稱秀出警告訊息
     if (empty($dir)) {
         return;
@@ -45,7 +46,8 @@ function mk_dir($dir = "") {
 }
 
 //拷貝目錄
-function full_copy($source = "", $target = "") {
+function full_copy($source = "", $target = "")
+{
     if (is_dir($source)) {
         @mkdir($target);
         $d = dir($source);
@@ -67,7 +69,8 @@ function full_copy($source = "", $target = "") {
     }
 }
 
-function rename_win($oldfile, $newfile) {
+function rename_win($oldfile, $newfile)
+{
     if (!rename($oldfile, $newfile)) {
         if (copy($oldfile, $newfile)) {
             unlink($oldfile);
@@ -82,7 +85,8 @@ function rename_win($oldfile, $newfile) {
 }
 
 //做縮圖
-function thumbnail($filename = "", $thumb_name = "", $type = "image/jpeg", $width = "120") {
+function thumbnail($filename = "", $thumb_name = "", $type = "image/jpeg", $width = "120")
+{
 
     ini_set('memory_limit', '50M');
     // Get new sizes
@@ -116,7 +120,8 @@ function thumbnail($filename = "", $thumb_name = "", $type = "image/jpeg", $widt
     exit;
 }
 
-function delete_directory($dirname) {
+function delete_directory($dirname)
+{
     if (is_dir($dirname)) {
         $dir_handle = opendir($dirname);
     }

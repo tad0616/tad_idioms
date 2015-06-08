@@ -1,7 +1,14 @@
+Tad idioms 1.4 Function Item (2015-06-08 release)
+================================================
+  1.Add BootStrap3 templates
+  2.Correction code to conform to specifications PSR2
+  3.Conforms with WCAG
+
+
 Tad idioms 1.3 Function Item (2014-05-02 release)
 ================================================
-1. Fixed rare phonetic
-2. Fixed Huichangdangqi phonetic
+  1. Fixed rare phonetic
+  2. Fixed Huichangdangqi phonetic
 
 Tad idioms 1.2 Function Item (2014-03-04 release)
 ================================================

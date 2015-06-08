@@ -1,0 +1,55 @@
+<{$toolbar}>
+
+<script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
+
+
+<div class="row-fluid">
+  <div class="span12">
+    <form action="index.php" method="post" class="form-horizontal" role="form">
+      <div class="control-group">
+        <label class="span2 control-label">
+          <{$smarty.const._MD_TADIDIOMS_SEARCH}><{$smarty.const._TAD_FOR}>
+        </label>
+        <div class="span9 controls">
+          <input type="text" name="keyword" class="span12">
+        </div>
+        <div class="span1 controls">
+          <button type="submit" class="btn"><{$smarty.const._MD_TADIDIOMS_SEARCH}></button>
+        </div>
+      </div>
+    </form>
+
+    <{foreach from=$all_content item=idioms}>
+      <a name="<{$idioms.name}>"></a>
+      <div class="well well-small" <{if $idioms.current}>style="background-color:#FFFF80"<{/if}>>
+        <table style='width:auto;'>
+        <tr>
+        <td><{$idioms.sn}>.</td>
+        <{$idioms.main}>
+        <td>
+          <div id='ttscontent<{$idioms.sn}>' style='display:none;'><{$idioms.title}>,<{$idioms.mean}></div>
+          <div id='ttsmedia<{$idioms.sn}>'></div>
+          <script language='javascript'>
+
+            var tts<{$idioms.sn}> = new TTS();
+            tts<{$idioms.sn}>.PlayerSet.hidden = false;
+            tts<{$idioms.sn}>.PlayerSet.width = 250;
+            tts<{$idioms.sn}>.PlayerSet.height = 30;
+            tts<{$idioms.sn}>.ConvertInit('id:ttscontent<{$idioms.sn}>','ttsmedia<{$idioms.sn}>','Bruce','100','0','0','0','5');
+
+          </script>
+
+        </td>
+        </tr>
+        </table>
+          <div style='margin:10px 0px 10px 35px;'><{$idioms.mean}></div>
+      </div>
+    <{/foreach}>
+
+    <{if $isAdmin}>
+    <a href='admin/main.php?op=tad_idioms_form'  class='btn btn-info'><{$smarty.const._TAD_ADD}></a>
+
+    <{/if}>
+    <{$bar}>
+  </div>
+</div>

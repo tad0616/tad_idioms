@@ -1,18 +1,13 @@
 <?php
-//  ------------------------------------------------------------------------ //
-// 本模組由 tad 製作
-// 製作日期：2012-06-02
-// $Id:$
-// ------------------------------------------------------------------------- //
-
 /*-----------引入檔案區--------------*/
 include "header.php";
-$xoopsOption['template_main'] = "tad_idioms_index_tpl.html";
+$xoopsOption['template_main'] = set_bootstrap("tad_idioms_index.html");
 include_once XOOPS_ROOT_PATH . "/header.php";
 /*-----------function區--------------*/
 
 //列出所有tad_idioms資料
-function list_tad_idioms($show_sn = "") {
+function list_tad_idioms($show_sn = "")
+{
     global $xoopsDB, $xoopsModule, $xoopsTpl;
 
     $andkeyword = "";
@@ -78,13 +73,12 @@ function list_tad_idioms($show_sn = "") {
 }
 
 /*-----------執行動作判斷區----------*/
-$op      = empty($_REQUEST['op']) ? "" : $_REQUEST['op'];
-$sn      = empty($_REQUEST['sn']) ? "" : (int)($_REQUEST['sn']);
-$show_sn = empty($_REQUEST['show_sn']) ? "" : (int)($_REQUEST['show_sn']);
+include_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
+$op      = system_CleanVars($_REQUEST, 'op', '', 'string');
+$sn      = system_CleanVars($_REQUEST, 'sn', 0, 'int');
+$show_sn = system_CleanVars($_REQUEST, 'show_sn', 0, 'int');
 
 $xoopsTpl->assign("toolbar", toolbar_bootstrap($interface_menu));
-$xoopsTpl->assign("bootstrap", get_bootstrap());
-$xoopsTpl->assign("jquery", get_jquery(true));
 $xoopsTpl->assign("isAdmin", $isAdmin);
 
 switch ($op) {
