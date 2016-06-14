@@ -15,7 +15,7 @@ function tad_idioms_show($options)
 
     $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " $by ";
 
-    $result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
+    $result = $xoopsDB->query($sql) or web_error($sql);
     $main   = "";
     while ($all = $xoopsDB->fetchArray($result)) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate

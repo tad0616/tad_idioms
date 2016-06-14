@@ -11,25 +11,6 @@ function xoops_module_update_tad_idioms(&$module, $old_version)
     return true;
 }
 
-/*
-function chk_chk1(){
-global $xoopsDB;
-$sql="select count(`counter`) from ".$xoopsDB->prefix("tad_idioms_content");
-$result=$xoopsDB->query($sql);
-if(empty($result)) return false;
-return true;
-}
-
-
-function go_update1(){
-global $xoopsDB;
-$sql="ALTER TABLE ".$xoopsDB->prefix("tad_idioms_content")." ADD `counter` smallint(5) NOT NULL";
-$xoopsDB->queryF($sql) or redirect_header(XOOPS_URL,3,  mysql_error());
-
-return true;
-}
- */
-
 //建立目錄
 function mk_dir($dir = "")
 {

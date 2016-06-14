@@ -1,3 +1,9 @@
+Tad idioms 1.5 Function Item (2016-05-20 release)
+================================================
+1.Support PHP7
+2.Remove BootStrap2
+
+
 Tad idioms 1.4 Function Item (2015-06-08 release)
 ================================================
   1.Add BootStrap3 templates

@@ -3,7 +3,7 @@ $modversion = array();
 
 //---模組基本資訊---//
 $modversion['name']        = _MI_TADIDIOMS_NAME;
-$modversion['version']     = 1.4;
+$modversion['version']     = 1.5;
 $modversion['description'] = _MI_TADIDIOMS_DESC;
 $modversion['author']      = _MI_TADIDIOMS_AUTHOR;
 $modversion['credits']     = _MI_TADIDIOMS_CREDITS;
@@ -14,13 +14,13 @@ $modversion['image']       = "images/logo_{$xoopsConfig['language']}.png";
 $modversion['dirname']     = basename(__DIR__);
 
 //---模組狀態資訊---//
-$modversion['release_date']        = '2015/06/08';
+$modversion['release_date']        = '2016/05/20';
 $modversion['module_website_url']  = 'http://tad0616.net/';
 $modversion['module_website_name'] = _MI_TAD_WEB;
 $modversion['module_status']       = 'release';
 $modversion['author_website_url']  = 'http://tad0616.net/';
 $modversion['author_website_name'] = _MI_TAD_WEB;
-$modversion['min_php']             = 5.2;
+$modversion['min_php']             = 5.3;
 $modversion['min_xoops']           = '2.5';
 
 //---paypal資訊---//
@@ -52,16 +52,11 @@ $modversion['onUninstall'] = "include/onUninstall.php";
 
 //---樣板設定---//
 $modversion['templates']                    = array();
-$i                                          = 1;
-$modversion['templates'][$i]['file']        = 'tad_idioms_index.html';
-$modversion['templates'][$i]['description'] = 'tad_idioms_index.html';
-++$i;
+$i                                          = 0;
 $modversion['templates'][$i]['file']        = 'tad_idioms_index_b3.html';
 $modversion['templates'][$i]['description'] = 'tad_idioms_index_b3.html';
-++$i;
-$modversion['templates'][$i]['file']        = 'tad_idioms_adm_main.html';
-$modversion['templates'][$i]['description'] = 'tad_idioms_adm_main.html';
-++$i;
+
+$i++;
 $modversion['templates'][$i]['file']        = 'tad_idioms_adm_main_b3.html';
 $modversion['templates'][$i]['description'] = 'tad_idioms_adm_main_b3.html';
 
