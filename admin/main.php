@@ -1,6 +1,6 @@
 <?php
 /*-----------引入檔案區--------------*/
-$xoopsOption['template_main'] = "tad_idioms_adm_main_b3.html";
+$xoopsOption['template_main'] = "tad_idioms_adm_main.tpl";
 include_once "header.php";
 include_once "../function.php";
 

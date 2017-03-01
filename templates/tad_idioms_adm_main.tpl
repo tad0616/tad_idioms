@@ -7,34 +7,34 @@
 
   	<form action="main.php" method="post" id="myForm" enctype="multipart/form-data" class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-md-2 control-label">
+        <label class="col-sm-2 control-label">
           <{$smarty.const._MA_TADIDIOMS_TITLE}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <input type="text" name="title" value="<{$title}>" id="title" class="validate[required] form-control" placeholder="<{$smarty.const._MA_TADIDIOMS_TITLE}>">
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-md-2 control-label">
+        <label class="col-sm-2 control-label">
           <{$smarty.const._MA_TADIDIOMS_JUIN}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <input type="text" name="juin" class="form-control" value="<{$juin}>" id="juin" placeholder="<{$smarty.const._MA_TADIDIOMS_JUIN}>">
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-md-2 control-label">
+        <label class="col-sm-2 control-label">
           <{$smarty.const._MA_TADIDIOMS_MEAN}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <textarea name="mean" class="form-control" id="mean" placeholder="<{$smarty.const._MA_TADIDIOMS_MEAN}>"><{$mean}></textarea>
         </div>
       </div>
 
       <div class="form-group">
-        <div class="col-md-12 text-center">
+        <div class="col-sm-12 text-center">
           <!--編號-->
           <input type="hidden" name="sn" value="<{$sn}>">
           <input type="hidden" name="op" value="<{$op}>">

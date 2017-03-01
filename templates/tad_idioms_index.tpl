@@ -3,16 +3,16 @@
 <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-sm-12">
     <form action="index.php" method="post" class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-md-2 control-label">
+        <label class="col-sm-2 control-label">
           <{$smarty.const._MD_TADIDIOMS_SEARCH}><{$smarty.const._TAD_FOR}>
         </label>
-        <div class="col-md-9">
+        <div class="col-sm-9">
           <input type="text" name="keyword" class="form-control">
         </div>
-        <div class="col-md-1">
+        <div class="col-sm-1">
           <button type="submit" class="btn"><{$smarty.const._MD_TADIDIOMS_SEARCH}></button>
         </div>
       </div>
