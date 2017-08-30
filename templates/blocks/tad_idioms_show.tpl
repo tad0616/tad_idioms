@@ -27,3 +27,8 @@
 <{$block.sound_js}>
 
 <div class="clearfix"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.ttsmedia > div > img').attr('alt','ttsmedia');
+  });
+</script>

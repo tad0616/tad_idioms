@@ -79,18 +79,21 @@ function tad_idioms_show($options)
 function play_idioms_sound($title = "")
 {
     $main = "
-  <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
-  <div id='ttscontent' style='display:none;'>$title</div>
-  <div id='ttsmedia'></div>
-  <script language='javascript'>
-
-      var tts = new TTS();
-      tts.PlayerSet.hidden = false;
-      tts.PlayerSet.width = 150;
-      tts.PlayerSet.height = 30;
-      tts.ConvertInit('id:ttscontent','ttsmedia','Bruce','100','0','0','0','5');
-
-  </script>
+      <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
+      <script type=\"text/javascript\">
+          $(document).ready(function(){
+            $('.ttsmedia_block > div > img').attr('alt','ttsmedia');
+          });
+        </script>
+      <div id='ttscontent' style='display:none;'>$title</div>
+      <div id='ttsmedia' class='ttsmedia_block'></div>
+      <script language='javascript'>
+          var tts = new TTS();
+          tts.PlayerSet.hidden = false;
+          tts.PlayerSet.width = 150;
+          tts.PlayerSet.height = 40;
+          tts.ConvertInit('id:ttscontent','ttsmedia','Bruce','100','0','0','0','5');
+      </script>
   ";
 
     return $main;
