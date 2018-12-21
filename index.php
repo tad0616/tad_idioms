@@ -27,7 +27,7 @@ function list_tad_idioms($show_sn = "")
 
     $result = $xoopsDB->query($sql) or web_error($sql);
 
-    $all_content = "";
+    $all_content = array();
     $i           = 0;
 
     while ($all = $xoopsDB->fetchArray($result)) {

@@ -16,7 +16,7 @@ function tad_idioms_show($options)
     $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " $by ";
 
     $result = $xoopsDB->query($sql) or web_error($sql);
-    $main   = "";
+
     while ($all = $xoopsDB->fetchArray($result)) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
         foreach ($all as $k => $v) {
@@ -36,7 +36,7 @@ function tad_idioms_show($options)
         } else {
             $block['no_juin'] = false;
             $ji               = explode(" ", $juin);
-            $main             = "";
+            $main             = array();
             $i                = 0;
             $sound            = array(_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5);
             foreach ($ji as $n => $juin) {

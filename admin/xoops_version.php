@@ -124,7 +124,7 @@ function list_tad_idioms($show_function = 1)
 
     $result = $xoopsDB->query($sql) or web_error($sql);
 
-    $all_content = "";
+    $all_content = array();
     $i           = 0;
     while ($all = $xoopsDB->fetchArray($result)) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
