@@ -64,7 +64,7 @@ function add_tad_idioms_counter($sn = '')
 {
     global $xoopsDB, $xoopsModule;
     $sql = "update " . $xoopsDB->prefix("tad_idioms") . " set `search_times`=`search_times`+1 where `sn`='{$sn}'";
-    $xoopsDB->queryF($sql) or web_error($sql);
+    $xoopsDB->queryF($sql) or web_error($sql, __FILE__, _LINE__);
 }
 
 //新增資料到tad_idioms中
@@ -80,7 +80,7 @@ function insert_tad_idioms()
     $sql = "insert into " . $xoopsDB->prefix("tad_idioms") . "
     (`title` , `juin` , `mean` , `show_times` , `search_times` , `cate`)
     values('{$_POST['title']}' , '{$_POST['juin']}' , '{$_POST['mean']}' , 0 , 0 , '{$_POST['cate']}')";
-    $xoopsDB->query($sql) or web_error($sql);
+    $xoopsDB->query($sql) or web_error($sql, __FILE__, _LINE__);
 
     //取得最後新增資料的流水編號
     $sn = $xoopsDB->getInsertId();
@@ -104,7 +104,7 @@ function update_tad_idioms($sn = "")
      `mean` = '{$_POST['mean']}' ,
      `cate` = '{$_POST['cate']}'
     where sn='$sn'";
-    $xoopsDB->queryF($sql) or web_error($sql);
+    $xoopsDB->queryF($sql) or web_error($sql, __FILE__, _LINE__);
 
     return $sn;
 }
@@ -122,7 +122,7 @@ function list_tad_idioms($show_function = 1)
     $sql     = $PageBar['sql'];
     $total   = $PageBar['total'];
 
-    $result = $xoopsDB->query($sql) or web_error($sql);
+    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, _LINE__);
 
     $all_content = array();
     $i           = 0;
@@ -154,7 +154,7 @@ function get_tad_idioms($sn = "")
         return;
     }
     $sql    = "select * from " . $xoopsDB->prefix("tad_idioms") . " where sn='$sn'";
-    $result = $xoopsDB->query($sql) or web_error($sql);
+    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, _LINE__);
     $data   = $xoopsDB->fetchArray($result);
 
     return $data;
@@ -165,7 +165,7 @@ function delete_tad_idioms($sn = "")
 {
     global $xoopsDB;
     $sql = "delete from " . $xoopsDB->prefix("tad_idioms") . " where sn='$sn'";
-    $xoopsDB->queryF($sql) or web_error($sql);
+    $xoopsDB->queryF($sql) or web_error($sql, __FILE__, _LINE__);
 }
 
 /*-----------執行動作判斷區----------*/

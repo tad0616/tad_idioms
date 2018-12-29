@@ -21,7 +21,7 @@ function show_one_tad_idioms($sn = "")
     add_tad_idioms_counter($sn);
 
     $sql    = "select * from " . $xoopsDB->prefix("tad_idioms") . " where sn='{$sn}'";
-    $result = $xoopsDB->query($sql) or web_error($sql);
+    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, _LINE__);
     $all    = $xoopsDB->fetchArray($result);
 
     //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
