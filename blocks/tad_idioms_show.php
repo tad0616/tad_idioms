@@ -79,22 +79,21 @@ function tad_idioms_show($options)
 function play_idioms_sound($title = "")
 {
     $main = "
-      <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
-      <script type=\"text/javascript\">
-          $(document).ready(function(){
-            $('.ttsmedia_block > div > img').attr('alt','ttsmedia');
-          });
-        </script>
-      <div id='ttscontent' style='display:none;'>$title</div>
-      <div id='ttsmedia' class='ttsmedia_block'></div>
-      <script language='javascript'>
-          var tts = new TTS();
-          tts.PlayerSet.hidden = false;
-          tts.PlayerSet.width = 150;
-          tts.PlayerSet.height = 40;
-          tts.ConvertInit('id:ttscontent','ttsmedia','Bruce','100','0','0','0','5');
-      </script>
-  ";
+    <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
+    <script type=\"text/javascript\">
+        $(document).ready(function(){
+        $('.ttsmedia_block > div > img').attr('alt','ttsmedia');
+        });
+    </script>
+    <div id='ttscontent' style='display:none;'>$title</div>
+    <div id='ttsmedia' class='ttsmedia_block'></div>
+    <script language='javascript'>
+        var tts = new TTS();
+        tts.PlayerSet.hidden = false;
+        tts.PlayerSet.width = 150;
+        tts.PlayerSet.height = 40;
+        tts.ConvertInit('id:ttscontent','ttsmedia','Bruce','100','0','0','0','5');
+    </script>";
 
     return $main;
 }
@@ -112,21 +111,42 @@ function tad_idioms_show_edit($options)
     $chked4_random = ($options[4] == 'random') ? "checked" : "";
 
     $form = "
-    " . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM0 . "
-    <INPUT type='text' name='options[0]' value='{$options[0]}'><br>
-    " . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM1 . "
-    <INPUT type='radio' $chked1_1 name='options[1]' value='1'>" . _YES . "
-    <INPUT type='radio' $chked1_0 name='options[1]' value='0'>" . _NO . "<br>
-    " . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM2 . "
-    <INPUT type='radio' $chked2_1 name='options[2]' value='1'>" . _YES . "
-    <INPUT type='radio' $chked2_0 name='options[2]' value='0'>" . _NO . "<br>
-    " . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM3 . "
-    <INPUT type='radio' $chked3_1 name='options[3]' value='1'>" . _YES . "
-    <INPUT type='radio' $chked3_0 name='options[3]' value='0'>" . _NO . "<br>
-    " . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM4 . "
-    <INPUT type='radio' $chked4_day name='options[4]' value='day'>" . _MB_TADIDIOMS_BITEM4_BY_DAY . "
-    <INPUT type='radio' $chked4_random name='options[4]' value='random'>" . _MB_TADIDIOMS_BITEM4_BY_RANDOM . "
-    ";
+    <ol class='my-form'>
+        <li class='my-row'>
+            <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM0 . "</lable>
+            <div class='my-content'>
+                <input type='text' class='my-input' name='options[0]' value='{$options[0]}' size=6>
+            </div>
+        </li>
+        <li class='my-row'>
+            <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM1 . "</lable>
+            <div class='my-content'>
+                <input type='radio' $chked1_1 name='options[1]' value='1'>" . _YES . "
+                <input type='radio' $chked1_0 name='options[1]' value='0'>" . _NO . "
+            </div>
+        </li>
+        <li class='my-row'>
+            <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM2 . "</lable>
+            <div class='my-content'>
+                <input type='radio' $chked2_1 name='options[2]' value='1'>" . _YES . "
+                <input type='radio' $chked2_0 name='options[2]' value='0'>" . _NO . "
+            </div>
+        </li>
+        <li class='my-row'>
+            <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM3 . "</lable>
+            <div class='my-content'>
+                <input type='radio' $chked3_1 name='options[3]' value='1'>" . _YES . "
+                <input type='radio' $chked3_0 name='options[3]' value='0'>" . _NO . "
+            </div>
+        </li>
+        <li class='my-row'>
+            <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM4 . "</lable>
+            <div class='my-content'>
+                <input type='radio' $chked4_day name='options[4]' value='day'>" . _MB_TADIDIOMS_BITEM4_BY_DAY . "
+                <input type='radio' $chked4_random name='options[4]' value='random'>" . _MB_TADIDIOMS_BITEM4_BY_RANDOM . "
+            </div>
+        </li>
+    </ol>";
 
     return $form;
 }
