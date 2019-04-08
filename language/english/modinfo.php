@@ -11,7 +11,7 @@ define('_MI_TADIDIOMS_BNAME1', 'Phrase back at any time');
 define('_MI_TADIDIOMS_BDESC1', 'Phrase back at any time (tad_idioms_show)');
 
 define('_MI_TADIDIOMS_DIRNAME', basename(dirname(dirname(__DIR__))));
-define('_MI_TADIDIOMS_HELP_HEADER', __DIR__ . '/help/helpheader.html');
+define('_MI_TADIDIOMS_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
 define('_MI_TADIDIOMS_BACK_2_ADMIN', 'Back to Administration of ');
 
 //help
