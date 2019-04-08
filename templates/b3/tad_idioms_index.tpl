@@ -1,26 +1,29 @@
 <{$toolbar}>
 
 <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
-
-
-<div class="row-fluid">
-  <div class="span12">
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.ttsmedia > div > img').attr('alt','ttsmedia');
+  });
+</script>
+<div class="row">
+  <div class="col-sm-12">
     <form action="index.php" method="post" class="form-horizontal" role="form">
-      <div class="control-group">
-        <label class="span2 control-label">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">
           <{$smarty.const._MD_TADIDIOMS_SEARCH}><{$smarty.const._TAD_FOR}>
         </label>
-        <div class="span9 controls">
-          <input type="text" name="keyword" class="span12">
+        <div class="col-sm-9">
+          <input type="text" name="keyword" class="form-control">
         </div>
-        <div class="span1 controls">
+        <div class="col-sm-1">
           <button type="submit" class="btn"><{$smarty.const._MD_TADIDIOMS_SEARCH}></button>
         </div>
       </div>
     </form>
 
     <{foreach from=$all_content item=idioms}>
-      <a name="<{$idioms.name}>"></a>
+      <div id="<{$idioms.name}>"></div>
       <div class="well well-small" <{if $idioms.current}>style="background-color:#FFFF80"<{/if}>>
         <table style='width:auto;'>
         <tr>
@@ -28,17 +31,14 @@
         <{$idioms.main}>
         <td>
           <div id='ttscontent<{$idioms.sn}>' style='display:none;'><{$idioms.title}>,<{$idioms.mean}></div>
-          <div id='ttsmedia<{$idioms.sn}>'></div>
+          <div class="ttsmedia" id='ttsmedia<{$idioms.sn}>'></div>
           <script language='javascript'>
-
             var tts<{$idioms.sn}> = new TTS();
             tts<{$idioms.sn}>.PlayerSet.hidden = false;
             tts<{$idioms.sn}>.PlayerSet.width = 250;
-            tts<{$idioms.sn}>.PlayerSet.height = 30;
+            tts<{$idioms.sn}>.PlayerSet.height = 40;
             tts<{$idioms.sn}>.ConvertInit('id:ttscontent<{$idioms.sn}>','ttsmedia<{$idioms.sn}>','Bruce','100','0','0','0','5');
-
           </script>
-
         </td>
         </tr>
         </table>

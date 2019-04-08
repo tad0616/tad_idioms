@@ -114,7 +114,7 @@ function list_tad_idioms($show_function = 1)
 {
     global $xoopsDB, $xoopsModule, $xoopsTpl;
 
-    $sql = "SELECT * FROM " . $xoopsDB->prefix("tad_idioms") . "";
+    $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . "";
 
     //getPageBar($原sql語法, 每頁顯示幾筆資料, 最多顯示幾個頁數選項);
     $PageBar = getPageBar($sql, 20, 10);

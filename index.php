@@ -1,7 +1,7 @@
 <?php
 /*-----------引入檔案區--------------*/
 include "header.php";
-$xoopsOption['template_main'] = set_bootstrap("tad_idioms_index.html");
+$xoopsOption['template_main'] = "tad_idioms_index.tpl";
 include_once XOOPS_ROOT_PATH . "/header.php";
 /*-----------function區--------------*/
 
@@ -25,9 +25,9 @@ function list_tad_idioms($show_sn = "")
     $sql     = $PageBar['sql'];
     $total   = $PageBar['total'];
 
-    $result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'], 3, mysql_error());
+    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
 
-    $all_content = "";
+    $all_content = array();
     $i           = 0;
 
     while ($all = $xoopsDB->fetchArray($result)) {
@@ -51,10 +51,10 @@ function list_tad_idioms($show_sn = "")
             $m   = $n * 3;
             $txt = substr($title, $m, 3);
             $main .= "
-      <td style='font-size:2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
-      <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
-      <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
-      ";
+              <td style='font-size:2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
+              <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
+              <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
+              ";
         }
 
         $newsn = sprintf('%1$03d', $sn);

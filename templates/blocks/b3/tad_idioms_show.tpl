@@ -8,7 +8,7 @@
           <span style="font-size:30px;"><{$word.txt}></span>
         </td>
         <td style="vertical-align:middle;text-align:left;font-size:10px;width:12px;line-height:10px;">
-          <span style="font-size:10px;writing-mode:tb-rl;line-height:<{$word.lh}>%;"><{$word.juin}></span>
+          <span style="font-size:10px;width:12px;line-height:<{$word.lh}>%;"><{$word.juin}></span>
         </td>
         <td style="vertical-align: middle; text-align:left;width:10px;padding:0px;">
           <span style="margin:0px;font-size:10px;"><{$word.sud}></span>
@@ -27,3 +27,8 @@
 <{$block.sound_js}>
 
 <div class="clearfix"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.ttsmedia > div > img').attr('alt','ttsmedia');
+  });
+</script>

@@ -5,36 +5,36 @@
 
     <h2><{$smarty.const._MA_TADIDIOMS_FORM}></h2>
 
-  	<form action="main.php" method="post" id="myForm" enctype="multipart/form-data" class="form-horizontal" role="form">
-      <div class="form-group">
-        <label class="col-md-2 control-label">
+  	<form action="main.php" method="post" id="myForm" enctype="multipart/form-data" role="form">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-sm-right">
           <{$smarty.const._MA_TADIDIOMS_TITLE}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <input type="text" name="title" value="<{$title}>" id="title" class="validate[required] form-control" placeholder="<{$smarty.const._MA_TADIDIOMS_TITLE}>">
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-md-2 control-label">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-sm-right">
           <{$smarty.const._MA_TADIDIOMS_JUIN}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <input type="text" name="juin" class="form-control" value="<{$juin}>" id="juin" placeholder="<{$smarty.const._MA_TADIDIOMS_JUIN}>">
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-md-2 control-label">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-sm-right">
           <{$smarty.const._MA_TADIDIOMS_MEAN}>
         </label>
-        <div class="col-md-10">
+        <div class="col-sm-10">
           <textarea name="mean" class="form-control" id="mean" placeholder="<{$smarty.const._MA_TADIDIOMS_MEAN}>"><{$mean}></textarea>
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="col-md-12 text-center">
+      <div class="form-group row">
+        <div class="col-sm-12 text-center">
           <!--編號-->
           <input type="hidden" name="sn" value="<{$sn}>">
           <input type="hidden" name="op" value="<{$op}>">
@@ -74,8 +74,8 @@
           <td><{$idioms.search_times}></td>
           <!--td><{$idioms.cate}></td-->
           <td>
-            <a href="main.php?op=tad_idioms_form&sn=<{$idioms.sn}>" class="btn btn-xs btn-warning"><{$smarty.const._TAD_EDIT}></a>
-            <a href="javascript:delete_tad_idioms_func(<{$idioms.sn}>);" class="btn btn-xs btn-danger"><{$smarty.const._TAD_DEL}></a>
+            <a href="main.php?op=tad_idioms_form&sn=<{$idioms.sn}>" class="btn btn-sm btn-warning"><{$smarty.const._TAD_EDIT}></a>
+            <a href="javascript:delete_tad_idioms_func(<{$idioms.sn}>);" class="btn btn-sm btn-danger"><{$smarty.const._TAD_DEL}></a>
           </td>
         </tr>
       <{/foreach}>
