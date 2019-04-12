@@ -27,7 +27,7 @@ function list_tad_idioms($show_sn = "")
 
     $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
 
-    $all_content = array();
+    $all_content = [];
     $i           = 0;
 
     while ($all = $xoopsDB->fetchArray($result)) {
@@ -38,7 +38,7 @@ function list_tad_idioms($show_sn = "")
 
         $ji    = explode(" ", $juin);
         $main  = "";
-        $sound = array(_MD_TADIDIOMS_2, _MD_TADIDIOMS_3, _MD_TADIDIOMS_4, _MD_TADIDIOMS_5);
+        $sound = [_MD_TADIDIOMS_2, _MD_TADIDIOMS_3, _MD_TADIDIOMS_4, _MD_TADIDIOMS_5];
         foreach ($ji as $n => $juin) {
             $sud = substr($juin, -2);
             if (in_array($sud, $sound)) {

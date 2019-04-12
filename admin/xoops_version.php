@@ -14,7 +14,7 @@ function tad_idioms_form($sn = "")
     if (!empty($sn)) {
         $DBV = get_tad_idioms($sn);
     } else {
-        $DBV = array();
+        $DBV = [];
     }
 
     //預設值設定
@@ -124,7 +124,7 @@ function list_tad_idioms($show_function = 1)
 
     $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
 
-    $all_content = array();
+    $all_content = [];
     $i           = 0;
     while ($all = $xoopsDB->fetchArray($result)) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate

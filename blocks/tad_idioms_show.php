@@ -36,9 +36,9 @@ function tad_idioms_show($options)
         } else {
             $block['no_juin'] = false;
             $ji               = explode(" ", $juin);
-            $main             = array();
+            $main             = [];
             $i                = 0;
-            $sound            = array(_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5);
+            $sound            = [_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5];
             foreach ($ji as $n => $juin) {
                 $sud = substr($juin, -2);
                 if (in_array($sud, $sound)) {
