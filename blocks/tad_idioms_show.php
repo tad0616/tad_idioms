@@ -5,7 +5,7 @@ function tad_idioms_show($options)
     global $xoopsDB;
     $num = empty($options[0]) ? 1 : (int) ($options[0]);
 
-    if ('day' == $options[4]) {
+    if ('day' === $options[4]) {
         $day = date('z');
         $start = $day % 200;
         $by = "order by sn limit $start,$num";
@@ -106,8 +106,8 @@ function tad_idioms_show_edit($options)
     $chked2_1 = (1 == $options[2]) ? 'checked' : '';
     $chked3_0 = (0 == $options[3]) ? 'checked' : '';
     $chked3_1 = (1 == $options[3]) ? 'checked' : '';
-    $chked4_day = ('day' == $options[4]) ? 'checked' : '';
-    $chked4_random = ('random' == $options[4]) ? 'checked' : '';
+    $chked4_day = ('day' === $options[4]) ? 'checked' : '';
+    $chked4_random = ('random' === $options[4]) ? 'checked' : '';
 
     $form = "
     <ol class='my-form'>
