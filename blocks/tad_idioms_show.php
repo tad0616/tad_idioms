@@ -5,15 +5,15 @@ function tad_idioms_show($options)
     global $xoopsDB;
     $num = empty($options[0]) ? 1 : (int) ($options[0]);
 
-    if ($options[4] == "day") {
-        $day   = date("z");
+    if ('day' == $options[4]) {
+        $day = date('z');
         $start = $day % 200;
-        $by    = "order by sn limit $start,$num";
+        $by = "order by sn limit $start,$num";
     } else {
         $by = "order by rand() limit 0,$num";
     }
 
-    $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " $by ";
+    $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " $by ";
 
     $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
 
@@ -30,53 +30,52 @@ function tad_idioms_show($options)
             $show_sn = $sn;
         }
 
-        if ($options[1] == 0) {
+        if (0 == $options[1]) {
             $block['no_juin'] = true;
-            $block['title']   = $title;
+            $block['title'] = $title;
         } else {
             $block['no_juin'] = false;
-            $ji               = explode(" ", $juin);
-            $main             = [];
-            $i                = 0;
-            $sound            = [_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5];
+            $ji = explode(' ', $juin);
+            $main = [];
+            $i = 0;
+            $sound = [_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5];
             foreach ($ji as $n => $juin) {
-                $sud = substr($juin, -2);
-                if (in_array($sud, $sound)) {
-
-                    $juin = substr($juin, 0, -2);
-                    $lh   = strlen($juin) > 6 ? 80 : 120;
+                $sud = mb_substr($juin, -2);
+                if (in_array($sud, $sound, true)) {
+                    $juin = mb_substr($juin, 0, -2);
+                    $lh = mb_strlen($juin) > 6 ? 80 : 120;
                 } else {
-                    $sud = "&nbsp;&nbsp;";
-                    $lh  = strlen($juin) > 6 ? 80 : 120;
+                    $sud = '&nbsp;&nbsp;';
+                    $lh = mb_strlen($juin) > 6 ? 80 : 120;
                 }
-                $m                = $n * 3;
-                $txt              = substr($title, $m, 3);
-                $main[$i]['txt']  = $txt;
-                $main[$i]['lh']   = $lh;
+                $m = $n * 3;
+                $txt = mb_substr($title, $m, 3);
+                $main[$i]['txt'] = $txt;
+                $main[$i]['lh'] = $lh;
                 $main[$i]['juin'] = $juin;
-                $main[$i]['sud']  = $sud;
+                $main[$i]['sud'] = $sud;
                 ++$i;
             }
         }
 
-        $mean = $options[2] == 1 ? $mean : "";
+        $mean = 1 == $options[2] ? $mean : '';
     }
 
-    $sound_js = "";
-    if ($options[3] == 1) {
-        $sound_js = play_idioms_sound($title . " , " . $mean);
+    $sound_js = '';
+    if (1 == $options[3]) {
+        $sound_js = play_idioms_sound($title . ' , ' . $mean);
     }
 
-    $block['g2p']      = $g2p;
-    $block['show_sn']  = $show_sn;
-    $block['main']     = $main;
-    $block['mean']     = $mean;
+    $block['g2p'] = $g2p;
+    $block['show_sn'] = $show_sn;
+    $block['main'] = $main;
+    $block['mean'] = $mean;
     $block['sound_js'] = $sound_js;
 
     return $block;
 }
 
-function play_idioms_sound($title = "")
+function play_idioms_sound($title = '')
 {
     $main = "
     <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
@@ -101,14 +100,14 @@ function play_idioms_sound($title = "")
 //區塊編輯函式
 function tad_idioms_show_edit($options)
 {
-    $chked1_0      = ($options[1] == 0) ? "checked" : "";
-    $chked1_1      = ($options[1] == 1) ? "checked" : "";
-    $chked2_0      = ($options[2] == 0) ? "checked" : "";
-    $chked2_1      = ($options[2] == 1) ? "checked" : "";
-    $chked3_0      = ($options[3] == 0) ? "checked" : "";
-    $chked3_1      = ($options[3] == 1) ? "checked" : "";
-    $chked4_day    = ($options[4] == 'day') ? "checked" : "";
-    $chked4_random = ($options[4] == 'random') ? "checked" : "";
+    $chked1_0 = (0 == $options[1]) ? 'checked' : '';
+    $chked1_1 = (1 == $options[1]) ? 'checked' : '';
+    $chked2_0 = (0 == $options[2]) ? 'checked' : '';
+    $chked2_1 = (1 == $options[2]) ? 'checked' : '';
+    $chked3_0 = (0 == $options[3]) ? 'checked' : '';
+    $chked3_1 = (1 == $options[3]) ? 'checked' : '';
+    $chked4_day = ('day' == $options[4]) ? 'checked' : '';
+    $chked4_random = ('random' == $options[4]) ? 'checked' : '';
 
     $form = "
     <ol class='my-form'>
@@ -143,10 +142,10 @@ function tad_idioms_show_edit($options)
             <lable class='my-label'>" . _MB_TADIDIOMS_TADIDIOMS_SHOW_EDIT_BITEM4 . "</lable>
             <div class='my-content'>
                 <input type='radio' $chked4_day name='options[4]' value='day'>" . _MB_TADIDIOMS_BITEM4_BY_DAY . "
-                <input type='radio' $chked4_random name='options[4]' value='random'>" . _MB_TADIDIOMS_BITEM4_BY_RANDOM . "
+                <input type='radio' $chked4_random name='options[4]' value='random'>" . _MB_TADIDIOMS_BITEM4_BY_RANDOM . '
             </div>
         </li>
-    </ol>";
+    </ol>';
 
     return $form;
 }
