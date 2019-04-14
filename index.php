@@ -1,8 +1,8 @@
 <?php
 /*-----------引入檔案區--------------*/
-include 'header.php';
-$xoopsOption['template_main'] = 'tad_idioms_index.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
+require __DIR__ . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'tad_idioms_index.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
 /*-----------function區--------------*/
 
 //列出所有tad_idioms資料
@@ -30,7 +30,7 @@ function list_tad_idioms($show_sn = '')
     $all_content = [];
     $i = 0;
 
-    while ($all = $xoopsDB->fetchArray($result)) {
+    while (false !== ($all = $xoopsDB->fetchArray($result))) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
         foreach ($all as $k => $v) {
             $$k = $v;
@@ -73,7 +73,7 @@ function list_tad_idioms($show_sn = '')
 }
 
 /*-----------執行動作判斷區----------*/
-include_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
+require_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
 $op = system_CleanVars($_REQUEST, 'op', '', 'string');
 $sn = system_CleanVars($_REQUEST, 'sn', 0, 'int');
 $show_sn = system_CleanVars($_REQUEST, 'show_sn', 0, 'int');
@@ -89,4 +89,4 @@ switch ($op) {
 }
 
 /*-----------秀出結果區--------------*/
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';
