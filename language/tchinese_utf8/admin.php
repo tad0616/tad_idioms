@@ -1,5 +1,5 @@
 <?php
-require_once dirname(dirname(dirname(__DIR__))) . '/tadtools/language/' . $xoopsConfig['language'] . '/admin_common.php';
+xoops_loadLanguage('admin_common', 'tadtools');
 define('_MA_TADIDIOMS_SN', '編號');
 define('_MA_TADIDIOMS_TITLE', '成語');
 define('_MA_TADIDIOMS_JUIN', '注音');
