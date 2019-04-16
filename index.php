@@ -41,7 +41,7 @@ function list_tad_idioms($show_sn = '')
         $sound = [_MD_TADIDIOMS_2, _MD_TADIDIOMS_3, _MD_TADIDIOMS_4, _MD_TADIDIOMS_5];
         foreach ($ji as $n => $juin) {
             $sud = mb_substr($juin, -2);
-            if (in_array($sud, $sound, true)) {
+            if (in_array($sud, $sound)) {
                 $juin = mb_substr($juin, 0, -2);
                 $lh = mb_strlen($juin) > 6 ? 80 : 120;
             } else {
