@@ -44,7 +44,7 @@ function tad_idioms_form($sn = '')
     //$op="replace_tad_idioms";
 
     if (!file_exists(TADTOOLS_PATH . '/formValidator.php')) {
-        redirect_header('index.php', 3, _MA_NEED_TADTOOLS);
+        redirect_header('index.php', 3, _TAD_NEED_TADTOOLS);
     }
     require_once TADTOOLS_PATH . '/formValidator.php';
     $formValidator = new formValidator('#myForm', true);
