@@ -5,7 +5,10 @@ if (!file_exists(XOOPS_ROOT_PATH . '/modules/tadtools/tad_function.php')) {
 }
 require_once XOOPS_ROOT_PATH . '/modules/tadtools/tad_function.php';
 
-/********************* 自訂函數 *********************/
+/********************* 自訂函數 ********************
+ * @param string $sn
+ * @return string|void
+ */
 
 //以流水號秀出某筆tad_idioms資料內容
 function show_one_tad_idioms($sn = '')
