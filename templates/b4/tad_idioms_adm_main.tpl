@@ -1,8 +1,5 @@
 <div class="container-fluid">
   <{if $op=="tad_idioms_form"}>
-
-  	<{$formValidator_code}>
-
     <h2><{$smarty.const._MA_TADIDIOMS_FORM}></h2>
 
   	<form action="main.php" method="post" id="myForm" enctype="multipart/form-data" role="form">

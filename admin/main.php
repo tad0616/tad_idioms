@@ -44,12 +44,9 @@ function tad_idioms_form($sn = "")
     $op = (empty($sn)) ? "insert_tad_idioms" : "update_tad_idioms";
     //$op="replace_tad_idioms";
 
-    if (!file_exists(XOOPS_ROOT_PATH . "/modules/tadtools/formValidator.php")) {
-        redirect_header("index.php", 3, _MA_NEED_TADTOOLS);
-    }
-    include_once XOOPS_ROOT_PATH . "/modules/tadtools/formValidator.php";
-    $formValidator = new formValidator("#myForm", true);
-    $formValidator_code = $formValidator->render();
+
+    $FormValidator = new FormValidator("#myForm", true);
+    $FormValidator->render();
 
     $xoopsTpl->assign('op', 'tad_idioms_form');
     $xoopsTpl->assign('next_op', $op);
@@ -57,7 +54,6 @@ function tad_idioms_form($sn = "")
     $xoopsTpl->assign('juin', $juin);
     $xoopsTpl->assign('title', $title);
     $xoopsTpl->assign('sn', $sn);
-    $xoopsTpl->assign('formValidator_code', $formValidator_code);
 }
 
 //新增tad_idioms計數器
@@ -73,7 +69,7 @@ function insert_tad_idioms()
 {
     global $xoopsDB, $xoopsUser;
 
-    $myts = MyTextSanitizer::getInstance();
+    $myts = \MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
     $_POST['juin'] = $myts->addSlashes($_POST['juin']);
     $_POST['mean'] = $myts->addSlashes($_POST['mean']);
@@ -94,7 +90,7 @@ function update_tad_idioms($sn = "")
 {
     global $xoopsDB, $xoopsUser;
 
-    $myts = MyTextSanitizer::getInstance();
+    $myts = \MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
     $_POST['juin'] = $myts->addSlashes($_POST['juin']);
     $_POST['mean'] = $myts->addSlashes($_POST['mean']);

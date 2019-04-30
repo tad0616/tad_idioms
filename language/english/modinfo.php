@@ -1,6 +1,5 @@
 <?php
-include_once XOOPS_ROOT_PATH . "/modules/tadtools/language/{$xoopsConfig['language']}/modinfo_common.php";
-
+xoops_loadLanguage('modinfo_common', 'tadtools');
 define('_MI_TADIDIOMS_NAME', 'Tad Learn Idioms');
 define('_MI_TADIDIOMS_AUTHOR', 'Tad');
 define('_MI_TADIDIOMS_CREDITS', 'Tad');
