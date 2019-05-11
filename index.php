@@ -1,7 +1,8 @@
 <?php
+use XoopsModules\Tadtools\Utility;
 /*-----------引入檔案區--------------*/
 require __DIR__ . '/header.php';
-$GLOBALS['xoopsOption']['template_main'] = 'tad_idioms_index.tpl';
+$xoopsOption['template_main'] = 'tad_idioms_index.tpl';
 require_once XOOPS_ROOT_PATH . '/header.php';
 /*-----------function區--------------*/
 
@@ -12,23 +13,23 @@ function list_tad_idioms($show_sn = '')
 
     $andkeyword = '';
     if (isset($_POST['keyword'])) {
-        $myts = MyTextSanitizer::getInstance();
-        $keyword = $myts->addSlashes($_POST['keyword']);
+        $myts = \MyTextSanitizer::getInstance();
+        $keyword    = $myts->addSlashes($_POST['keyword']);
         $andkeyword = " where `title` like '%{$keyword}%' or `mean` like '%{$keyword}%'";
     }
 
     $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " $andkeyword";
 
-    //getPageBar($原sql語法, 每頁顯示幾筆資料, 最多顯示幾個頁數選項);
-    $PageBar = getPageBar($sql, 20, 10);
-    $bar = $PageBar['bar'];
-    $sql = $PageBar['sql'];
-    $total = $PageBar['total'];
+    //Utility::getPageBar($原sql語法, 每頁顯示幾筆資料, 最多顯示幾個頁數選項);
+    $PageBar = Utility::getPageBar($sql, 20, 10);
+    $bar     = $PageBar['bar'];
+    $sql     = $PageBar['sql'];
+    $total   = $PageBar['total'];
 
-    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
+    $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
 
     $all_content = [];
-    $i = 0;
+    $i           = 0;
 
     while (false !== ($all = $xoopsDB->fetchArray($result))) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
@@ -48,7 +49,7 @@ function list_tad_idioms($show_sn = '')
                 $sud = '&nbsp;&nbsp;';
                 $lh = mb_strlen($juin) > 6 ? 80 : 120;
             }
-            $m = $n * 3;
+            $m   = $n * 3;
             $txt = mb_substr($title, $m, 3);
             $main .= "
               <td style='font-size:2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
@@ -60,11 +61,11 @@ function list_tad_idioms($show_sn = '')
         $newsn = sprintf('%1$03d', $sn);
 
         $all_content[$i]['current'] = $sn == $show_sn ? 1 : 0;
-        $all_content[$i]['name'] = $sn;
-        $all_content[$i]['sn'] = $newsn;
-        $all_content[$i]['main'] = $main;
-        $all_content[$i]['mean'] = $mean;
-        $all_content[$i]['title'] = $title;
+        $all_content[$i]['name']    = $sn;
+        $all_content[$i]['sn']      = $newsn;
+        $all_content[$i]['main']    = $main;
+        $all_content[$i]['mean']    = $mean;
+        $all_content[$i]['title']   = $title;
         ++$i;
     }
 
@@ -74,8 +75,8 @@ function list_tad_idioms($show_sn = '')
 
 /*-----------執行動作判斷區----------*/
 require_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
-$op = system_CleanVars($_REQUEST, 'op', '', 'string');
-$sn = system_CleanVars($_REQUEST, 'sn', 0, 'int');
+$op      = system_CleanVars($_REQUEST, 'op', '', 'string');
+$sn      = system_CleanVars($_REQUEST, 'sn', 0, 'int');
 $show_sn = system_CleanVars($_REQUEST, 'show_sn', 0, 'int');
 
 $xoopsTpl->assign('toolbar', toolbar_bootstrap($interface_menu));

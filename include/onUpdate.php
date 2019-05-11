@@ -1,14 +1,15 @@
 <?php
 
-use XoopsModules\Tad_idioms\Utility;
+use XoopsModules\Tadtools\Utility;
+if (!class_exists('XoopsModules\Tadtools\Utility')) {
+    require XOOPS_ROOT_PATH . '/modules/tadtools/preloads/autoloader.php';
+}
 
 function xoops_module_update_tad_idioms(&$module, $old_version)
 {
     global $xoopsDB;
 
     Utility::mk_dir(XOOPS_ROOT_PATH . '/uploads/tad_idioms');
-
-    //if(!chk_chk1()) tad_idioms_go_update1();
 
     return true;
 }

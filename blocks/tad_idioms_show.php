@@ -1,4 +1,5 @@
 <?php
+use XoopsModules\Tadtools\Utility;
 //區塊主函式 (成語隨時背(tad_idioms_show))
 function tad_idioms_show($options)
 {
@@ -8,14 +9,14 @@ function tad_idioms_show($options)
     if ('day' === $options[4]) {
         $day = date('z');
         $start = $day % 200;
-        $by = "order by sn limit $start,$num";
+        $by    = "order by sn limit $start,$num";
     } else {
         $by = "order by rand() limit 0,$num";
     }
 
     $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " $by ";
 
-    $result = $xoopsDB->query($sql) or web_error($sql, __FILE__, __LINE__);
+    $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
 
     while (false !== ($all = $xoopsDB->fetchArray($result))) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
@@ -32,12 +33,12 @@ function tad_idioms_show($options)
 
         if (0 == $options[1]) {
             $block['no_juin'] = true;
-            $block['title'] = $title;
+            $block['title']   = $title;
         } else {
             $block['no_juin'] = false;
             $ji = explode(' ', $juin);
             $main = [];
-            $i = 0;
+            $i                = 0;
             $sound = [_MB_TADIDIOMS_2, _MB_TADIDIOMS_3, _MB_TADIDIOMS_4, _MB_TADIDIOMS_5];
             foreach ($ji as $n => $juin) {
                 $sud = mb_substr($juin, -2);
@@ -48,12 +49,12 @@ function tad_idioms_show($options)
                     $sud = '&nbsp;&nbsp;';
                     $lh = mb_strlen($juin) > 6 ? 80 : 120;
                 }
-                $m = $n * 3;
+                $m                = $n * 3;
                 $txt = mb_substr($title, $m, 3);
-                $main[$i]['txt'] = $txt;
-                $main[$i]['lh'] = $lh;
+                $main[$i]['txt']  = $txt;
+                $main[$i]['lh']   = $lh;
                 $main[$i]['juin'] = $juin;
-                $main[$i]['sud'] = $sud;
+                $main[$i]['sud']  = $sud;
                 ++$i;
             }
         }
@@ -66,10 +67,10 @@ function tad_idioms_show($options)
         $sound_js = play_idioms_sound($title . ' , ' . $mean);
     }
 
-    $block['g2p'] = $g2p;
-    $block['show_sn'] = $show_sn;
-    $block['main'] = $main;
-    $block['mean'] = $mean;
+    $block['g2p']      = $g2p;
+    $block['show_sn']  = $show_sn;
+    $block['main']     = $main;
+    $block['mean']     = $mean;
     $block['sound_js'] = $sound_js;
 
     return $block;
@@ -78,7 +79,7 @@ function tad_idioms_show($options)
 function play_idioms_sound($title = '')
 {
     $main = "
-    <script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
+    <script language='javascript' src='https://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
     <script type=\"text/javascript\">
         $(document).ready(function(){
         $('.ttsmedia_block > div > img').attr('alt','ttsmedia');
