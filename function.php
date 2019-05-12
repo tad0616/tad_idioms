@@ -3,7 +3,10 @@
 use XoopsModules\Tadtools\Utility;
 xoops_loadLanguage('main', 'tadtools');
 
-/********************* 自訂函數 *********************/
+/********************* 自訂函數 ********************
+ * @param string $sn
+ * @return string|void
+ */
 
 //以流水號秀出某筆tad_idioms資料內容
 function show_one_tad_idioms($sn = '')
