@@ -6,21 +6,20 @@ xoops_loadLanguage('main', 'tadtools');
 /********************* 自訂函數 *********************/
 
 //以流水號秀出某筆tad_idioms資料內容
-function show_one_tad_idioms($sn = "")
+function show_one_tad_idioms($sn = '')
 {
     global $xoopsDB, $xoopsModule;
     if (empty($sn)) {
         return;
-    } else {
-        $sn = (int) ($sn);
     }
+    $sn = (int) ($sn);
 
     //計數器欄位值 +1
     add_tad_idioms_counter($sn);
 
-    $sql = "select * from " . $xoopsDB->prefix("tad_idioms") . " where sn='{$sn}'";
+    $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " where sn='{$sn}'";
     $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
-    $all = $xoopsDB->fetchArray($result);
+    $all    = $xoopsDB->fetchArray($result);
 
     //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
     foreach ($all as $k => $v) {
@@ -39,9 +38,9 @@ function show_one_tad_idioms($sn = "")
   </table>";
 
     //raised,corners,inset
-    $main = div_3d("", $data, "corners");
+    $main = div_3d('', $data, 'corners');
 
     return $main;
 }
 
-/********************* 預設函數 *********************/;
+/********************* 預設函數 *********************/
