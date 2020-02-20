@@ -1,4 +1,5 @@
 <?php
+use XoopsModules\Tadtools\FormValidator;
 use XoopsModules\Tadtools\Utility;
 /*-----------引入檔案區--------------*/
 $xoopsOption['template_main'] = 'tad_idioms_adm_main.tpl';
@@ -44,7 +45,6 @@ function tad_idioms_form($sn = '')
     $op = (empty($sn)) ? 'insert_tad_idioms' : 'update_tad_idioms';
     //$op="replace_tad_idioms";
 
-
     $FormValidator = new FormValidator("#myForm", true);
     $FormValidator->render();
 
@@ -71,8 +71,8 @@ function insert_tad_idioms()
 
     $myts = \MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
-    $_POST['juin']  = $myts->addSlashes($_POST['juin']);
-    $_POST['mean']  = $myts->addSlashes($_POST['mean']);
+    $_POST['juin'] = $myts->addSlashes($_POST['juin']);
+    $_POST['mean'] = $myts->addSlashes($_POST['mean']);
 
     $sql = 'insert into ' . $xoopsDB->prefix('tad_idioms') . "
     (`title` , `juin` , `mean` , `show_times` , `search_times` , `cate`)
@@ -92,8 +92,8 @@ function update_tad_idioms($sn = '')
 
     $myts = \MyTextSanitizer::getInstance();
     $_POST['title'] = $myts->addSlashes($_POST['title']);
-    $_POST['juin']  = $myts->addSlashes($_POST['juin']);
-    $_POST['mean']  = $myts->addSlashes($_POST['mean']);
+    $_POST['juin'] = $myts->addSlashes($_POST['juin']);
+    $_POST['mean'] = $myts->addSlashes($_POST['mean']);
 
     $sql = 'update ' . $xoopsDB->prefix('tad_idioms') . " set
      `title` = '{$_POST['title']}' ,
@@ -115,26 +115,26 @@ function list_tad_idioms($show_function = 1)
 
     //Utility::getPageBar($原sql語法, 每頁顯示幾筆資料, 最多顯示幾個頁數選項);
     $PageBar = Utility::getPageBar($sql, 20, 10);
-    $bar     = $PageBar['bar'];
-    $sql     = $PageBar['sql'];
-    $total   = $PageBar['total'];
+    $bar = $PageBar['bar'];
+    $sql = $PageBar['sql'];
+    $total = $PageBar['total'];
 
     $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
 
     $all_content = [];
-    $i           = 0;
+    $i = 0;
     while (false !== ($all = $xoopsDB->fetchArray($result))) {
         //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
         foreach ($all as $k => $v) {
             $$k = $v;
         }
 
-        $all_content[$i]['sn']           = $sn;
-        $all_content[$i]['title']        = $title;
-        $all_content[$i]['juin']         = $juin;
-        $all_content[$i]['show_times']   = $show_times;
+        $all_content[$i]['sn'] = $sn;
+        $all_content[$i]['title'] = $title;
+        $all_content[$i]['juin'] = $juin;
+        $all_content[$i]['show_times'] = $show_times;
         $all_content[$i]['search_times'] = $search_times;
-        $all_content[$i]['cate']         = $cate;
+        $all_content[$i]['cate'] = $cate;
         ++$i;
     }
 
@@ -151,7 +151,7 @@ function get_tad_idioms($sn = '')
     }
     $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " where sn='$sn'";
     $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
-    $data   = $xoopsDB->fetchArray($result);
+    $data = $xoopsDB->fetchArray($result);
 
     return $data;
 }

@@ -1,6 +1,6 @@
 <{$toolbar}>
 
-<script language='javascript' src='http://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
+<script language='javascript' src='https://tts.itri.org.tw/TTScript/Text2SpeechJsApiV2.php?key=ekn@-_ji50*2A*14*2Aefg*60ab'></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $('.ttsmedia > div > img').attr('alt','ttsmedia');
