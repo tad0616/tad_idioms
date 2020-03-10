@@ -52,9 +52,9 @@ function list_tad_idioms($show_sn = '')
             $m = $n * 3;
             $txt = substr($title, $m, 3);
             $main .= "
-              <td style='font-size:2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
-              <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
-              <td style='font-size:11px;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
+              <td style='font-size: 2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
+              <td style='font-size: 0.6875em;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
+              <td style='font-size: 0.6875em;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
               ";
         }
 
