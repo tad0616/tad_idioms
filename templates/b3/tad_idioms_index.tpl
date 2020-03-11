@@ -6,6 +6,7 @@
     $('.ttsmedia > div > img').attr('alt','ttsmedia');
   });
 </script>
+<h2 style="display:none;"><{$smarty.const._MD_TADIDIOMS_TITLE}></h2>
 <div class="row">
   <div class="col-sm-12">
     <form action="index.php" method="post" class="form-horizontal" role="form">
