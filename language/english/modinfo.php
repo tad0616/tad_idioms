@@ -5,7 +5,6 @@ define('_MI_TADIDIOMS_AUTHOR', 'Tad');
 define('_MI_TADIDIOMS_CREDITS', 'Tad');
 define('_MI_TADIDIOMS_DESC', 'Idiom learning module');
 define('_MI_TADIDIOMS_ADMENU1', 'Idiom management');
-define('_MI_TADIDIOMS_SMNAME2', 'Idiom interpretation');
 define('_MI_TADIDIOMS_BNAME1', 'Phrase back at any time');
 define('_MI_TADIDIOMS_BDESC1', 'Phrase back at any time (tad_idioms_show)');
 

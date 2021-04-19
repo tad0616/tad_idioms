@@ -1,4 +1,5 @@
 <?php
+use Xmf\Request;
 use XoopsModules\Tadtools\Utility;
 /*-----------引入檔案區--------------*/
 require __DIR__ . '/header.php';
@@ -52,10 +53,10 @@ function list_tad_idioms($show_sn = '')
             $m = $n * 3;
             $txt = substr($title, $m, 3);
             $main .= "
-              <td style='font-size: 2em;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
-              <td style='font-size: 0.6875em;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
-              <td style='font-size: 0.6875em;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
-              ";
+                <td style='font-size: 2rem;font-family:" . _MD_TADIDIOMS_FONT . ";'>$txt</td>
+                <td style='font-size: 0.6875rem;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px;line-height:{$lh}%;'>$juin</td>
+                <td style='font-size: 0.6875rem;font-family:" . _MD_TADIDIOMS_FONT . ";width:12px'>$sud</td>
+                ";
         }
 
         $newsn = sprintf('%1$03d', $sn);
@@ -74,13 +75,9 @@ function list_tad_idioms($show_sn = '')
 }
 
 /*-----------執行動作判斷區----------*/
-require_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
-$op = system_CleanVars($_REQUEST, 'op', '', 'string');
-$sn = system_CleanVars($_REQUEST, 'sn', 0, 'int');
-$show_sn = system_CleanVars($_REQUEST, 'show_sn', 0, 'int');
-
-$xoopsTpl->assign('toolbar', Utility::toolbar_bootstrap($interface_menu));
-$xoopsTpl->assign('isAdmin', $isAdmin);
+$op = Request::getString('op');
+$sn = Request::getInt('sn');
+$show_sn = Request::getInt('show_sn');
 
 switch ($op) {
     //預設動作
@@ -89,5 +86,7 @@ switch ($op) {
         break;
 }
 
+$xoopsTpl->assign('toolbar', Utility::toolbar_bootstrap($interface_menu));
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/tad_idioms/css/module.css');
 /*-----------秀出結果區--------------*/
 require_once XOOPS_ROOT_PATH . '/footer.php';

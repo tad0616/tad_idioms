@@ -3,7 +3,7 @@ $modversion = [];
 
 //---模組基本資訊---//
 $modversion['name'] = _MI_TADIDIOMS_NAME;
-$modversion['version'] = 1.65;
+$modversion['version'] = 1.66;
 $modversion['description'] = _MI_TADIDIOMS_DESC;
 $modversion['author'] = _MI_TADIDIOMS_AUTHOR;
 $modversion['credits'] = _MI_TADIDIOMS_CREDITS;
@@ -14,7 +14,7 @@ $modversion['image'] = "images/logo_{$xoopsConfig['language']}.png";
 $modversion['dirname'] = basename(__DIR__);
 
 //---模組狀態資訊---//
-$modversion['release_date'] = '2020/04/13';
+$modversion['release_date'] = '2021/04/19';
 $modversion['module_website_url'] = 'https://tad0616.net/';
 $modversion['module_website_name'] = _MI_TAD_WEB;
 $modversion['module_status'] = 'release';
@@ -42,8 +42,6 @@ $modversion['adminmenu'] = 'admin/menu.php';
 
 //---使用者主選單設定---//
 $modversion['hasMain'] = 1;
-$modversion['sub'][2]['name'] = _MI_TADIDIOMS_SMNAME2;
-$modversion['sub'][2]['url'] = 'view.php';
 
 //---安裝設定---//
 $modversion['onInstall'] = 'include/onInstall.php';

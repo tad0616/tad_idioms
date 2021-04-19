@@ -1,4 +1,5 @@
 <?php
+use Xmf\Request;
 use XoopsModules\Tadtools\FormValidator;
 use XoopsModules\Tadtools\Utility;
 /*-----------引入檔案區--------------*/
@@ -165,9 +166,8 @@ function delete_tad_idioms($sn = '')
 }
 
 /*-----------執行動作判斷區----------*/
-require_once $GLOBALS['xoops']->path('/modules/system/include/functions.php');
-$op = system_CleanVars($_REQUEST, 'op', '', 'string');
-$sn = system_CleanVars($_REQUEST, 'sn', 0, 'int');
+$op = Request::getString('op');
+$sn = Request::getInt('sn');
 
 switch ($op) {
     /*---判斷動作請貼在下方---*/
@@ -176,21 +176,25 @@ switch ($op) {
     case 'insert_tad_idioms':
         $sn = insert_tad_idioms();
         header("location: {$_SERVER['PHP_SELF']}?sn=$sn");
-        break;
+        exit;
+
     //更新資料
     case 'update_tad_idioms':
         update_tad_idioms($sn);
         header("location: {$_SERVER['PHP_SELF']}");
-        break;
+        exit;
+
     //輸入表格
     case 'tad_idioms_form':
         tad_idioms_form($sn);
         break;
+
     //刪除資料
     case 'delete_tad_idioms':
         delete_tad_idioms($sn);
         header("location: {$_SERVER['PHP_SELF']}");
-        break;
+        exit;
+
     //預設動作
     default:
         list_tad_idioms();
@@ -199,4 +203,5 @@ switch ($op) {
 }
 
 /*-----------秀出結果區--------------*/
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/tad_idioms/css/module.css');
 require_once __DIR__ . '/footer.php';
