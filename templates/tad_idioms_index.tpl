@@ -7,7 +7,7 @@
         <div class="input-group-prepend input-group-addon">
             <span class="input-group-text"><{$smarty.const._MD_TADIDIOMS_SEARCH}><{$smarty.const._TAD_FOR}></span>
         </div>
-        <input type="text" name="keyword" class="form-control" placeholder="<{$smarty.const._MD_TADIDIOMS_SEARCH}>">
+        <input type="text" name="keyword" class="form-control" title="<{$smarty.const._MD_TADIDIOMS_SEARCH}>" placeholder="<{$smarty.const._MD_TADIDIOMS_SEARCH}>">
         <div class="input-group-append input-group-btn">
             <button type="submit" class="btn btn-primary"><{$smarty.const._MD_TADIDIOMS_SEARCH}></button>
         </div>
