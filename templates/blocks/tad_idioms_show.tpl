@@ -22,7 +22,7 @@
     <div class="alert alert-info"><{$block.mean}></div>
 <{/if}>
 
-<div class="text-right">
+<div class="text-right text-end">
     <a href="<{$xoops_url}>/modules/tad_idioms/index.php?g2p=<{$block.g2p}>&show_sn=<{$block.show_sn}>#<{$block.show_sn}>" class="btn btn-sm btn-info">more...</a>
 </div>
 

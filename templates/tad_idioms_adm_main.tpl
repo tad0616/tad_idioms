@@ -3,7 +3,7 @@
         <h2><{$smarty.const._MA_TADIDIOMS_FORM}></h2>
 
         <form action="main.php" method="post" id="myForm" enctype="multipart/form-data" class="form-horizontal" role="form">
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2 control-label col-form-label text-sm-right">
                     <{$smarty.const._MA_TADIDIOMS_TITLE}>
                 </label>
@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2 control-label col-form-label text-sm-right">
                     <{$smarty.const._MA_TADIDIOMS_JUIN}>
                 </label>
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2 control-label col-form-label text-sm-right">
                     <{$smarty.const._MA_TADIDIOMS_MEAN}>
                 </label>
