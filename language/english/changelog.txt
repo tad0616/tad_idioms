@@ -1,3 +1,8 @@
+Tad Idioms 1.6.9 (released on 2022-08-13)
+=================================================
+1. CSS reduce the introduction of external style files
+2. Fixed font
+
 Tad Idioms 1.6.8 (released on 2022-01-28)
 =================================================
 1.Support BootStrap5
