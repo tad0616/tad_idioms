@@ -14,8 +14,7 @@ function list_tad_idioms($show_sn = '')
 
     $andkeyword = '';
     if (isset($_POST['keyword'])) {
-        $myts = \MyTextSanitizer::getInstance();
-        $keyword = $myts->addSlashes($_POST['keyword']);
+        $keyword = $xoopsDB->escape($_POST['keyword']);
         $andkeyword = " where `title` like '%{$keyword}%' or `mean` like '%{$keyword}%'";
     }
 

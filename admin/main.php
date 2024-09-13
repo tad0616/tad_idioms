@@ -60,7 +60,7 @@ function tad_idioms_form($sn = '')
 //新增tad_idioms計數器
 function add_tad_idioms_counter($sn = '')
 {
-    global $xoopsDB, $xoopsModule;
+    global $xoopsDB;
     $sql = 'update ' . $xoopsDB->prefix('tad_idioms') . " set `search_times`=`search_times`+1 where `sn`='{$sn}'";
     $xoopsDB->queryF($sql) or Utility::web_error($sql, __FILE__, __LINE__);
 }
@@ -68,12 +68,11 @@ function add_tad_idioms_counter($sn = '')
 //新增資料到tad_idioms中
 function insert_tad_idioms()
 {
-    global $xoopsDB, $xoopsUser;
+    global $xoopsDB;
 
-    $myts = \MyTextSanitizer::getInstance();
-    $_POST['title'] = $myts->addSlashes($_POST['title']);
-    $_POST['juin'] = $myts->addSlashes($_POST['juin']);
-    $_POST['mean'] = $myts->addSlashes($_POST['mean']);
+    $_POST['title'] = $xoopsDB->escape($_POST['title']);
+    $_POST['juin'] = $xoopsDB->escape($_POST['juin']);
+    $_POST['mean'] = $xoopsDB->escape($_POST['mean']);
 
     $sql = 'insert into ' . $xoopsDB->prefix('tad_idioms') . "
     (`title` , `juin` , `mean` , `show_times` , `search_times` , `cate`)
@@ -89,12 +88,11 @@ function insert_tad_idioms()
 //更新tad_idioms某一筆資料
 function update_tad_idioms($sn = '')
 {
-    global $xoopsDB, $xoopsUser;
+    global $xoopsDB;
 
-    $myts = \MyTextSanitizer::getInstance();
-    $_POST['title'] = $myts->addSlashes($_POST['title']);
-    $_POST['juin'] = $myts->addSlashes($_POST['juin']);
-    $_POST['mean'] = $myts->addSlashes($_POST['mean']);
+    $_POST['title'] = $xoopsDB->escape($_POST['title']);
+    $_POST['juin'] = $xoopsDB->escape($_POST['juin']);
+    $_POST['mean'] = $xoopsDB->escape($_POST['mean']);
 
     $sql = 'update ' . $xoopsDB->prefix('tad_idioms') . " set
      `title` = '{$_POST['title']}' ,

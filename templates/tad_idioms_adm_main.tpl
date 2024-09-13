@@ -33,7 +33,7 @@
             <div class="bar">
                 <!--編號-->
                 <input type="hidden" name="sn" value="<{$sn}>">
-                <input type="hidden" name="op" value="<{$op}>">
+                <input type="hidden" name="op" value="<{$next_op}>">
                 <button type="submit" class="btn btn-primary"><{$smarty.const._TAD_SAVE}></button>
             </div>
 
