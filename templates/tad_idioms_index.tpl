@@ -16,7 +16,7 @@
 
 <{foreach from=$all_content item=idioms}>
     <div id="<{$idioms.name}>"></div>
-    <div class="alert alert-info" <{if $idioms.current}>style="background-color:#FFFF80"<{/if}>>
+    <div class="alert alert-info" <{if $idioms.current|default:false}>style="background-color:#FFFF80"<{/if}>>
         <table style='width:auto;'>
             <tr>
                 <td><{$idioms.sn}>.</td>
@@ -27,7 +27,7 @@
     </div>
 <{/foreach}>
 
-<{if $smarty.session.tad_idioms_adm}>
+<{if $smarty.session.tad_idioms_adm|default:false}>
     <div class="bar">
         <a href='admin/main.php?op=tad_idioms_form'  class='btn btn-info'><{$smarty.const._TAD_ADD}></a>
     </div>

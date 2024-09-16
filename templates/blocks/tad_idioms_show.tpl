@@ -1,6 +1,6 @@
 <table style="width:auto;margin:10px auto;font-family:<{$smarty.const._MB_TADIDIOMS_FONT}>;">
     <tr>
-        <{if $block.no_juin}>
+        <{if $block.no_juin|default:false}>
             <td style="font-size:2.5em;"><{$block.title}></td>
         <{else}>
             <{foreach from=$block.main item=word}>
@@ -18,7 +18,7 @@
     </tr>
 </table>
 
-<{if $block.mean}>
+<{if $block.mean|default:false}>
     <div class="alert alert-info"><{$block.mean}></div>
 <{/if}>
 
