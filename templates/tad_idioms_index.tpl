@@ -1,4 +1,4 @@
-<{$toolbar}>
+<{$toolbar|default:''}>
 
 <h2 style="display:none;"><{$smarty.const._MD_TADIDIOMS_TITLE}></h2>
 
@@ -33,4 +33,4 @@
     </div>
 <{/if}>
 
-<{$bar}>
+<{$bar|default:''}>

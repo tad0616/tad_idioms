@@ -8,7 +8,7 @@
                     <{$smarty.const._MA_TADIDIOMS_TITLE}>
                 </label>
                 <div class="col-sm-10">
-                    <input type="text" name="title" value="<{$title}>" id="title" class="validate[required] form-control" placeholder="<{$smarty.const._MA_TADIDIOMS_TITLE}>">
+                    <input type="text" name="title" value="<{$title|default:''}>" id="title" class="validate[required] form-control" placeholder="<{$smarty.const._MA_TADIDIOMS_TITLE}>">
                 </div>
             </div>
 
@@ -17,7 +17,7 @@
                     <{$smarty.const._MA_TADIDIOMS_JUIN}>
                 </label>
                 <div class="col-sm-10">
-                    <input type="text" name="juin" class="form-control" value="<{$juin}>" id="juin" placeholder="<{$smarty.const._MA_TADIDIOMS_JUIN}>">
+                    <input type="text" name="juin" class="form-control" value="<{$juin|default:''}>" id="juin" placeholder="<{$smarty.const._MA_TADIDIOMS_JUIN}>">
                 </div>
             </div>
 
@@ -26,14 +26,14 @@
                     <{$smarty.const._MA_TADIDIOMS_MEAN}>
                 </label>
                 <div class="col-sm-10">
-                    <textarea name="mean" class="form-control" id="mean" placeholder="<{$smarty.const._MA_TADIDIOMS_MEAN}>"><{$mean}></textarea>
+                    <textarea name="mean" class="form-control" id="mean" placeholder="<{$smarty.const._MA_TADIDIOMS_MEAN}>"><{$mean|default:''}></textarea>
                 </div>
             </div>
 
             <div class="bar">
                 <!--編號-->
-                <input type="hidden" name="sn" value="<{$sn}>">
-                <input type="hidden" name="op" value="<{$next_op}>">
+                <input type="hidden" name="sn" value="<{$sn|default:''}>">
+                <input type="hidden" name="op" value="<{$next_op|default:''}>">
                 <button type="submit" class="btn btn-primary"><{$smarty.const._TAD_SAVE}></button>
             </div>
 
@@ -78,6 +78,6 @@
         <div class="bar" >
             <a href="main.php?op=tad_idioms_form" class="btn btn-info"><{$smarty.const._TAD_ADD}></a>
         </div>
-        <{$bar}>
+        <{$bar|default:''}>
     <{/if}>
 </div>
