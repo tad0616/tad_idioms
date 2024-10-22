@@ -9,17 +9,17 @@ function tad_idioms_show($options)
     if ('day' === $options[3]) {
         $day = date('z');
         $start = $day % 200;
-        $by = "order by sn limit $start,$num";
+        $by = "ORDER BY sn LIMIT ?, ?";
+        $params = [$start, $num];
     } else {
-        $by = "order by rand() limit 0,$num";
+        $by = "ORDER BY RAND() LIMIT 0, ?";
+        $params = [$num];
     }
 
-    $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " $by ";
-
-    $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'SELECT * FROM ' . $xoopsDB->prefix('tad_idioms') . " $by";
+    $result = Utility::query($sql, str_repeat('i', count($params)), $params) or Utility::web_error($sql, __FILE__, __LINE__);
 
     while (false !== ($all = $xoopsDB->fetchArray($result))) {
-        //以下會產生這些變數： $sn , $title , $juin , $mean , $show_times , $search_times , $cate
         foreach ($all as $k => $v) {
             $$k = $v;
         }

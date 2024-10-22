@@ -1,24 +1,60 @@
 <?php
 use Xmf\Request;
 use XoopsModules\Tadtools\FormValidator;
+use XoopsModules\Tadtools\SweetAlert;
 use XoopsModules\Tadtools\Utility;
 /*-----------引入檔案區--------------*/
-$xoopsOption['template_main'] = 'tad_idioms_adm_main.tpl';
+$xoopsOption['template_main'] = 'tad_idioms_admin.tpl';
 require_once __DIR__ . '/header.php';
-require_once dirname(__DIR__) . '/function.php';
+
+/*-----------執行動作判斷區----------*/
+$op = Request::getString('op');
+$sn = Request::getInt('sn');
+
+switch ($op) {
+
+    //新增資料
+    case 'insert_tad_idioms':
+        $sn = insert_tad_idioms();
+        header("location: {$_SERVER['PHP_SELF']}?sn=$sn");
+        exit;
+
+    //更新資料
+    case 'update_tad_idioms':
+        update_tad_idioms($sn);
+        header("location: {$_SERVER['PHP_SELF']}");
+        exit;
+
+    //輸入表格
+    case 'tad_idioms_form':
+        tad_idioms_form($sn);
+        break;
+
+    //刪除資料
+    case 'delete_tad_idioms':
+        delete_tad_idioms($sn);
+        header("location: {$_SERVER['PHP_SELF']}");
+        exit;
+
+    //預設動作
+    default:
+        list_tad_idioms();
+        $op = 'list_tad_idioms';
+        break;
+
+}
+
+/*-----------秀出結果區--------------*/
+$xoopsTpl->assign('now_op', $op);
+require_once __DIR__ . '/footer.php';
 
 /*-----------function區--------------*/
 //tad_idioms編輯表單
 function tad_idioms_form($sn = '')
 {
-    global $xoopsDB, $xoopsUser, $xoopsTpl;
+    global $xoopsTpl;
 
-    //抓取預設值
-    if (!empty($sn)) {
-        $DBV = get_tad_idioms($sn);
-    } else {
-        $DBV = [];
-    }
+    $DBV = !empty($sn) ? get_tad_idioms($sn) : [];
 
     //預設值設定
 
@@ -34,17 +70,7 @@ function tad_idioms_form($sn = '')
     //設定「mean」欄位預設值
     $mean = (!isset($DBV['mean'])) ? '' : $DBV['mean'];
 
-    //設定「show_times」欄位預設值
-    $show_times = (!isset($DBV['show_times'])) ? null : $DBV['show_times'];
-
-    //設定「search_times」欄位預設值
-    $search_times = (!isset($DBV['search_times'])) ? null : $DBV['search_times'];
-
-    //設定「cate」欄位預設值
-    $cate = (!isset($DBV['cate'])) ? '' : $DBV['cate'];
-
     $op = (empty($sn)) ? 'insert_tad_idioms' : 'update_tad_idioms';
-    //$op="replace_tad_idioms";
 
     $FormValidator = new FormValidator("#myForm", true);
     $FormValidator->render();
@@ -61,8 +87,11 @@ function tad_idioms_form($sn = '')
 function add_tad_idioms_counter($sn = '')
 {
     global $xoopsDB;
-    $sql = 'update ' . $xoopsDB->prefix('tad_idioms') . " set `search_times`=`search_times`+1 where `sn`='{$sn}'";
-    $xoopsDB->queryF($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'UPDATE ' . $xoopsDB->prefix('tad_idioms') . '
+    SET `search_times` = `search_times` + 1
+    WHERE `sn` = ?';
+    Utility::query($sql, 'i', [$sn]) or Utility::web_error($sql, __FILE__, __LINE__);
+
 }
 
 //新增資料到tad_idioms中
@@ -70,14 +99,10 @@ function insert_tad_idioms()
 {
     global $xoopsDB;
 
-    $_POST['title'] = $xoopsDB->escape($_POST['title']);
-    $_POST['juin'] = $xoopsDB->escape($_POST['juin']);
-    $_POST['mean'] = $xoopsDB->escape($_POST['mean']);
-
-    $sql = 'insert into ' . $xoopsDB->prefix('tad_idioms') . "
-    (`title` , `juin` , `mean` , `show_times` , `search_times` , `cate`)
-    values('{$_POST['title']}' , '{$_POST['juin']}' , '{$_POST['mean']}' , 0 , 0 , '{$_POST['cate']}')";
-    $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'INSERT INTO `' . $xoopsDB->prefix('tad_idioms') . '`
+    (`title`, `juin`, `mean`, `show_times`, `search_times`, `cate`)
+    VALUES (?, ?, ?, 0, 0, ?)';
+    Utility::query($sql, 'ssss', [$_POST['title'], $_POST['juin'], $_POST['mean'], $_POST['cate']]) or Utility::web_error($sql, __FILE__, __LINE__);
 
     //取得最後新增資料的流水編號
     $sn = $xoopsDB->getInsertId();
@@ -90,25 +115,21 @@ function update_tad_idioms($sn = '')
 {
     global $xoopsDB;
 
-    $_POST['title'] = $xoopsDB->escape($_POST['title']);
-    $_POST['juin'] = $xoopsDB->escape($_POST['juin']);
-    $_POST['mean'] = $xoopsDB->escape($_POST['mean']);
-
-    $sql = 'update ' . $xoopsDB->prefix('tad_idioms') . " set
-     `title` = '{$_POST['title']}' ,
-     `juin` = '{$_POST['juin']}' ,
-     `mean` = '{$_POST['mean']}' ,
-     `cate` = '{$_POST['cate']}'
-    where sn='$sn'";
-    $xoopsDB->queryF($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'UPDATE `' . $xoopsDB->prefix('tad_idioms') . '` SET
+    `title` = ?,
+    `juin` = ?,
+    `mean` = ?,
+    `cate` = ?
+    WHERE `sn` = ?';
+    Utility::query($sql, 'ssssi', [$_POST['title'], $_POST['juin'], $_POST['mean'], $_POST['cate'], $sn]) or Utility::web_error($sql, __FILE__, __LINE__);
 
     return $sn;
 }
 
 //列出所有tad_idioms資料
-function list_tad_idioms($show_function = 1)
+function list_tad_idioms()
 {
-    global $xoopsDB, $xoopsModule, $xoopsTpl;
+    global $xoopsDB, $xoopsTpl;
 
     $sql = 'SELECT * FROM ' . $xoopsDB->prefix('tad_idioms') . '';
 
@@ -139,6 +160,9 @@ function list_tad_idioms($show_function = 1)
 
     $xoopsTpl->assign('all_content', $all_content);
     $xoopsTpl->assign('bar', $bar);
+
+    $SweetAlert = new SweetAlert();
+    $SweetAlert->render("delete_tad_idioms_func", "main.php?op=delete_tad_idioms&sn=", 'sn');
 }
 
 //以流水號取得某筆tad_idioms資料
@@ -148,8 +172,9 @@ function get_tad_idioms($sn = '')
     if (empty($sn)) {
         return;
     }
-    $sql = 'select * from ' . $xoopsDB->prefix('tad_idioms') . " where sn='$sn'";
-    $result = $xoopsDB->query($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'SELECT * FROM `' . $xoopsDB->prefix('tad_idioms') . '` WHERE `sn`=?';
+    $result = Utility::query($sql, 'i', [$sn]) or Utility::web_error($sql, __FILE__, __LINE__);
+
     $data = $xoopsDB->fetchArray($result);
 
     return $data;
@@ -159,47 +184,7 @@ function get_tad_idioms($sn = '')
 function delete_tad_idioms($sn = '')
 {
     global $xoopsDB;
-    $sql = 'delete from ' . $xoopsDB->prefix('tad_idioms') . " where sn='$sn'";
-    $xoopsDB->queryF($sql) or Utility::web_error($sql, __FILE__, __LINE__);
+    $sql = 'DELETE FROM `' . $xoopsDB->prefix('tad_idioms') . '` WHERE `sn` =?';
+    Utility::query($sql, 'i', [$sn]) or Utility::web_error($sql, __FILE__, __LINE__);
+
 }
-
-/*-----------執行動作判斷區----------*/
-$op = Request::getString('op');
-$sn = Request::getInt('sn');
-
-switch ($op) {
-    /*---判斷動作請貼在下方---*/
-
-    //新增資料
-    case 'insert_tad_idioms':
-        $sn = insert_tad_idioms();
-        header("location: {$_SERVER['PHP_SELF']}?sn=$sn");
-        exit;
-
-    //更新資料
-    case 'update_tad_idioms':
-        update_tad_idioms($sn);
-        header("location: {$_SERVER['PHP_SELF']}");
-        exit;
-
-    //輸入表格
-    case 'tad_idioms_form':
-        tad_idioms_form($sn);
-        break;
-
-    //刪除資料
-    case 'delete_tad_idioms':
-        delete_tad_idioms($sn);
-        header("location: {$_SERVER['PHP_SELF']}");
-        exit;
-
-    //預設動作
-    default:
-        list_tad_idioms();
-        break;
-        /*---判斷動作請貼在上方---*/
-}
-
-/*-----------秀出結果區--------------*/
-$xoTheme->addStylesheet(XOOPS_URL . '/modules/tad_idioms/css/module.css');
-require_once __DIR__ . '/footer.php';

@@ -5,12 +5,29 @@ use XoopsModules\Tadtools\Utility;
 require __DIR__ . '/header.php';
 $xoopsOption['template_main'] = 'tad_idioms_index.tpl';
 require_once XOOPS_ROOT_PATH . '/header.php';
+
+/*-----------執行動作判斷區----------*/
+$op = Request::getString('op');
+$show_sn = Request::getInt('show_sn');
+
+switch ($op) {
+    //預設動作
+    default:
+        list_tad_idioms($show_sn);
+        break;
+}
+
+$xoopsTpl->assign('toolbar', Utility::toolbar_bootstrap($interface_menu, false, $interface_icon));
+$xoTheme->addStylesheet('modules/tad_idioms/css/module.css');
+/*-----------秀出結果區--------------*/
+require_once XOOPS_ROOT_PATH . '/footer.php';
+
 /*-----------function區--------------*/
 
 //列出所有tad_idioms資料
 function list_tad_idioms($show_sn = '')
 {
-    global $xoopsDB, $xoopsModule, $xoopsTpl;
+    global $xoopsDB, $xoopsTpl;
 
     $andkeyword = '';
     if (isset($_POST['keyword'])) {
@@ -72,20 +89,3 @@ function list_tad_idioms($show_sn = '')
     $xoopsTpl->assign('bar', $bar);
     $xoopsTpl->assign('all_content', $all_content);
 }
-
-/*-----------執行動作判斷區----------*/
-$op = Request::getString('op');
-$sn = Request::getInt('sn');
-$show_sn = Request::getInt('show_sn');
-
-switch ($op) {
-    //預設動作
-    default:
-        list_tad_idioms($show_sn);
-        break;
-}
-
-$xoopsTpl->assign('toolbar', Utility::toolbar_bootstrap($interface_menu));
-$xoTheme->addStylesheet(XOOPS_URL . '/modules/tad_idioms/css/module.css');
-/*-----------秀出結果區--------------*/
-require_once XOOPS_ROOT_PATH . '/footer.php';
