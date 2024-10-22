@@ -17,9 +17,9 @@ switch ($op) {
         break;
 }
 
+/*-----------秀出結果區--------------*/
 $xoopsTpl->assign('toolbar', Utility::toolbar_bootstrap($interface_menu, false, $interface_icon));
 $xoTheme->addStylesheet('modules/tad_idioms/css/module.css');
-/*-----------秀出結果區--------------*/
 require_once XOOPS_ROOT_PATH . '/footer.php';
 
 /*-----------function區--------------*/
