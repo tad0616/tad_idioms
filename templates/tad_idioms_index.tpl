@@ -29,7 +29,7 @@
 
 <{if $smarty.session.tad_idioms_adm|default:false}>
     <div class="bar">
-        <a href='admin/main.php?op=tad_idioms_form'  class='btn btn-info'><{$smarty.const._TAD_ADD}></a>
+        <a href='admin/main.php?op=tad_idioms_form'  class='btn btn-info'><i class="fa fa-plus-square" aria-hidden="true"></i>  <{$smarty.const._TAD_ADD}></a>
     </div>
 <{/if}>
 
