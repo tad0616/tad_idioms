@@ -2,7 +2,7 @@
 
 <form action="main.php" method="post" id="myForm" enctype="multipart/form-data" class="form-horizontal" role="form">
     <div class="form-group row mb-3">
-        <label class="col-sm-2 control-label col-form-label text-sm-right">
+        <label class="col-sm-2 control-label col-form-label text-sm-right text-sm-end">
             <{$smarty.const._MA_TADIDIOMS_TITLE}>
         </label>
         <div class="col-sm-10">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-group row mb-3">
-        <label class="col-sm-2 control-label col-form-label text-sm-right">
+        <label class="col-sm-2 control-label col-form-label text-sm-right text-sm-end">
             <{$smarty.const._MA_TADIDIOMS_JUIN}>
         </label>
         <div class="col-sm-10">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-group row mb-3">
-        <label class="col-sm-2 control-label col-form-label text-sm-right">
+        <label class="col-sm-2 control-label col-form-label text-sm-right text-sm-end">
             <{$smarty.const._MA_TADIDIOMS_MEAN}>
         </label>
         <div class="col-sm-10">

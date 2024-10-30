@@ -1,10 +1,3 @@
 <?php
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
-
-//判斷是否對該模組有管理權限
-if (!isset($_SESSION['tad_idioms_adm'])) {
-    $_SESSION['tad_idioms_adm'] = ($xoopsUser) ? $xoopsUser->isAdmin() : false;
-}
-
-$interface_menu[_MD_TADIDIOMS_INDEX] = 'index.php';
-$interface_icon[_MD_TADIDIOMS_INDEX] = "fa-language";
+require_once __DIR__ . '/interface.php';
