@@ -43,7 +43,6 @@ Tad Idioms 1.6.2 (2019-05-10 released)
 1. Support XOOPS 2.5.10
 2. No longer supports PHP 5.3
 
-
 Tad Idioms 1.6.1 (2019-01-01 released)
 ==========================================================
 1. Support BootStrap4
@@ -51,11 +50,9 @@ Tad Idioms 1.6.1 (2019-01-01 released)
 3. Support PHP 7.3
 4. Support MySQL database strict mode
 
-
 Tad Idioms 1.6 (2017-06-16 released)
 =================================================
 1.Completion of accessibility 2.0 A level detection
-
 
 Tad Idioms 1.5.1 (2017-01-08 released)
 ================================================
@@ -68,13 +65,11 @@ Tad idioms 1.5  (2016-05-20 released)
 1.Support PHP7
 2.Remove BootStrap2
 
-
 Tad idioms 1.4  (2015-06-08 released)
 ================================================
   1.Add BootStrap3 templates
   2.Correction code to conform to specifications PSR2
   3.Conforms with WCAG
-
 
 Tad idioms 1.3  (2014-05-02 released)
 ================================================
