@@ -58,7 +58,7 @@ $modversion['templates'] = [
 ];
 
 $modversion['blocks'] = [
-    [
+    1 => [
         'file' => 'tad_idioms_show.php',
         'name' => _MI_TADIDIOMS_BNAME1,
         'description' => _MI_TADIDIOMS_BDESC1,
